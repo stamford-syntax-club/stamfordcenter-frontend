@@ -29,7 +29,7 @@ export default function Home() {
 			<div className="relative w-full">
 				{/* Logo */}
 				<div className="absolute right-0 hidden aspect-square h-[620px] w-[620px] 2xl:inline">
-					<Image src="/assets/images/ssc-mascot-clearbg.png" alt="Stamford Syntax Club Mascot" fill />
+					<Image src="/assets/images/logos/ssc-mascot-clearbg.png" alt="Stamford Syntax Club Mascot" fill />
 				</div>
 
 				{/* Header */}
