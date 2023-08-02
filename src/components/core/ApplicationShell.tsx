@@ -1,4 +1,3 @@
-import ApplicationNavigationBar from "@components/core/ApplicationNavigationBar";
 import { AppShell, useMantineTheme } from "@mantine/core";
 import { useState } from "react";
 import ApplicationHeader from "./ApplicationHeader";
@@ -16,7 +15,7 @@ export default function ApplicationShell({ children }: { children: React.ReactNo
 			}}
 			navbarOffsetBreakpoint="sm"
 			asideOffsetBreakpoint="sm"
-			navbar={<ApplicationNavigationBar opened={opened} />}
+			// navbar={<ApplicationNavigationBar opened={opened} />}
 			header={<ApplicationHeader opened={opened} setOpened={setOpened} theme={theme} />}
 		>
 			{children}

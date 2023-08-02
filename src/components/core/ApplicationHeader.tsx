@@ -1,4 +1,4 @@
-import { Burger, Header, MantineTheme, Text } from "@mantine/core";
+import { Header, MantineTheme, Text } from "@mantine/core";
 import React from "react";
 
 interface ApplicationHeaderProps {
@@ -11,15 +11,17 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 	return (
 		<Header height={{ base: 50, md: 70 }} p="md">
 			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-				<Burger
+				{/* <Burger
 					opened={opened}
 					onClick={() => setOpened((o) => !o)}
 					size="sm"
 					color={theme.colors.gray[6]}
 					mr="xl"
-				/>
+				/> */}
 
-				<Text>Application header</Text>
+				<div className="container mx-auto">
+					<Text>Application header</Text>
+				</div>
 			</div>
 		</Header>
 	);
