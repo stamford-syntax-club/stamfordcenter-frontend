@@ -37,7 +37,9 @@ export default function Home() {
 					<div className="flex flex-col text-2xl md:text-4xl">
 						<Text className="font-semibold text-white">Welcome to the</Text>
 						<span className="-mt-4 text-5xl md:-mt-6 md:text-6xl">
-							<Text c="blue.7">Stamford Center</Text>
+							<Text className="gradient-span mr-2 w-fit cursor-pointer whitespace-nowrap bg-clip-text font-extrabold uppercase text-transparent">
+								Stamford Center
+							</Text>
 						</span>
 					</div>
 				</h1>
