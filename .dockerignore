@@ -1,0 +1,21 @@
+# Files and directories to ignore when building the Docker image
+
+# Ignore node_modules and npm cache
+node_modules
+npm-debug.log
+
+# Ignore development-specific files
+.DS_Store
+.vscode/
+
+# Ignore version control files and directories
+.git
+.gitignore
+
+# Ignore build and output files
+/.next
+/out
+
+# Ignore Docker-related files
+dockerfile
+.dockerignore
