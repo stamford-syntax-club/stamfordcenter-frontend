@@ -59,7 +59,7 @@ function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
 			<Menu.Target>
 				<UnstyledButton className="flex flex-row items-center">
 					{title}&nbsp;
-					<FaChevronDown />
+					<FaChevronDown size={7} />
 				</UnstyledButton>
 			</Menu.Target>
 
