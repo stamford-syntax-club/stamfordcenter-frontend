@@ -1,8 +1,8 @@
+import QuickLinksSection from "@components/page_sections/QuickLinksSection";
 import { Stack, Text, ThemeIcon } from "@mantine/core";
 import Image from "next/image";
 
 import { FaCheck } from "react-icons/fa";
-import TestCardPage from "./test_card";
 
 const talkingPoints = [
 	{
@@ -88,9 +88,8 @@ export default function Home() {
 
 			{/* Quick Links Section */}
 			<section className="mt-80">
-				<TestCardPage />
+				<QuickLinksSection />
 			</section>
-
 		</div>
 	);
 }
