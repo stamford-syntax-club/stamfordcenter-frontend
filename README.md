@@ -51,6 +51,7 @@ Coming soon...
 ## 🧑‍💻 Contributors
 - **Tawan Tocharoentanaphol** - [@Lxkas](https://github.com/Lxkas)
 - **Ayham H. Tamim** - [@Ayham1590](https://github.com/Ayham1590)
+- **Chinathai Panditya** - [@chinathaip](https://github.com/chinathaip)
 
 We welcome all contributions! Please read our [CONTRIBUTING](CONTRIBUTING.md) guide for more information.
 
