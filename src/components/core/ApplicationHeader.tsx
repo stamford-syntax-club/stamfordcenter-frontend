@@ -23,7 +23,7 @@ const navigationItems: NavigationItem[] = [
 	},
 	{
 		title: "Reg Announcement",
-		href: "/regga",
+		href: "/news",
 	},
 	{
 		title: "Undergraduate",
