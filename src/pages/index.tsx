@@ -2,6 +2,7 @@ import { Stack, Text, ThemeIcon } from "@mantine/core";
 import Image from "next/image";
 
 import { FaCheck } from "react-icons/fa";
+import TestCardPage from "./test_card";
 
 const talkingPoints = [
 	{
@@ -26,7 +27,7 @@ const talkingPoints = [
 export default function Home() {
 	return (
 		<div className="container mx-auto mt-12">
-			<div className="relative w-full">
+			<section className="relative w-full">
 				{/* Logo */}
 				<div className="absolute right-0 hidden aspect-square h-[620px] w-[620px] 2xl:inline">
 					<Image src="/assets/images/logos/ssc-mascot-clearbg.png" alt="Stamford Syntax Club Mascot" fill />
@@ -37,7 +38,7 @@ export default function Home() {
 					<div className="flex flex-col text-2xl md:text-4xl">
 						<Text className="font-semibold text-white">Welcome to the</Text>
 						<span className="-mt-4 text-5xl md:-mt-6 md:text-6xl">
-							<Text className="gradient-span mr-2 w-fit cursor-pointer whitespace-nowrap bg-clip-text font-extrabold uppercase text-transparent">
+							<Text className="gradient-span mr-2 w-fit cursor-pointer bg-clip-text font-extrabold uppercase text-transparent">
 								Stamford Center
 							</Text>
 						</span>
@@ -83,7 +84,13 @@ export default function Home() {
 						</Text>
 					</div>
 				</div>
-			</div>
+			</section>
+
+			{/* Quick Links Section */}
+			<section className="mt-80">
+				<TestCardPage />
+			</section>
+
 		</div>
 	);
 }
