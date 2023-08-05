@@ -50,6 +50,7 @@ Coming soon...
 
 ## 🧑‍💻 Contributors
 - **Tawan Tocharoentanaphol** - [@Lxkas](https://github.com/Lxkas)
+- **Ayham H. Tamim** - [@Ayham1590](https://github.com/Ayham1590)
 
 We welcome all contributions! Please read our [CONTRIBUTING](CONTRIBUTING.md) guide for more information.
 
@@ -59,4 +60,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📧 Contact
 For any queries, please feel free to reach out to us at [email](mailto:some-email@example.com).
 
-Make the most of your Stamford experience with us!
+Make the most of your Stamford experience with us~!
