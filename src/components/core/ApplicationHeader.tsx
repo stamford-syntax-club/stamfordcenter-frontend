@@ -1,7 +1,8 @@
-import { Burger, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { Burger, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 
 interface ApplicationHeaderProps {
@@ -75,6 +76,18 @@ function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
 }
 
 export default function ApplicationHeader({ opened, setOpened, theme }: ApplicationHeaderProps) {
+	const searchbarRef = useRef<HTMLInputElement>(null);
+	useHotkeys([
+		[
+			"ctrl+K",
+			() => {
+				if (searchbarRef.current) {
+					searchbarRef.current.focus();
+				}
+			},
+		],
+	]);
+
 	return (
 		<Header height={70} p="sm">
 			{/* Main div */}
@@ -116,7 +129,7 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 						</div>
 
 						{/* Navigation */}
-						<div className="ml-20 hidden h-full flex-row items-center gap-x-4 lg:flex">
+						<div className="xl:ml-20class ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
 							{navigationItems.map(({ title, href, subitems: children }) => (
 								<div
 									key={"navitem" + title}
@@ -131,16 +144,24 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 									)}
 								</div>
 							))}
-						</div>
 
-						{/* Search */}
-						<div className="ml-auto lg:mr-56 lg:w-[20rem]">
-							<TextInput
-								icon={<FaSearch />}
-								placeholder="Search in Stamford Center"
-								variant="filled"
-								size="md"
-							/>
+							{/* Searchbar */}
+							{/* TODO: Maybe move to the far right, and collapse on non-xl screen sizes. */}
+							{/* FIXME: Will have some squishing problems, fix later */}
+							<div className="pl-4">
+								<TextInput
+									ref={searchbarRef}
+									placeholder="Search"
+									variant="filled"
+									icon={<FaSearch />}
+									rightSectionWidth={70}
+									rightSection={<Code className="hidden xl:inline">Ctrl + K</Code>}
+									onKeyDown={getHotkeyHandler([
+										["Enter", () => searchbarRef.current?.blur()],
+										["Escape", () => searchbarRef.current?.blur()],
+									])}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
