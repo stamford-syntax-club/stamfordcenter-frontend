@@ -1,8 +1,8 @@
-import { Burger, Header, MantineTheme, Menu, UnstyledButton } from "@mantine/core";
+import { Burger, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaSearch } from "react-icons/fa";
 
 interface ApplicationHeaderProps {
 	opened: boolean;
@@ -131,6 +131,16 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 									)}
 								</div>
 							))}
+						</div>
+
+						{/* Search */}
+						<div className="ml-auto lg:mr-56 lg:w-[20rem]">
+							<TextInput
+								icon={<FaSearch />}
+								placeholder="Search in Stamford Center"
+								variant="filled"
+								size="md"
+							/>
 						</div>
 					</div>
 				</div>
