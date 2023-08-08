@@ -1,5 +1,6 @@
 import { ActionIcon, Button, Card, Group, Tooltip } from "@mantine/core";
 import Image from "next/image";
+import Link from "next/link";
 import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 interface QuickLinkCardProps {
@@ -15,19 +16,19 @@ const quickLinkCards = [
 		title: "Blackboard",
 		description:
 			"A platform to find your study material from your instructors, including submitting your assignment.",
-		link: "eee",
+		link: "https://learn.stamford.edu/",
 	},
 	{
 		imgUrl: "/assets/images/logos/registrar.png",
 		title: "Registrar",
 		description: "A platform to perform ADD/DROP, payment, check GPA, and many more.",
-		link: "eee",
+		link: "https://reg.stamford.edu/registrar/login.asp",
 	},
 	{
 		imgUrl: "/assets/images/logos/microsoft.png",
 		title: "Microsoft365",
 		description: "A main platform provide by STIU for you to use the Microsoft cloud-base products for free.",
-		link: "eee",
+		link: "https://www.microsoft365.com/",
 	},
 	{
 		imgUrl: "/assets/images/logos/van.png",
@@ -46,20 +47,20 @@ const quickLinkCards = [
 		imgUrl: "/assets/images/logos/student-council.png",
 		title: "Student Council",
 		description: "Follow up the events and activities organized and cooperate by the Student Council team.",
-		link: "eee",
+		link: "https://www.instagram.com/studentcouncilstiu/",
 	},
 	{
 		imgUrl: "/assets/images/logos/registrar.png",
 		title: "Student Instagram",
 		description: "An official Instagram of Stamford that regularly update the important activities and events.",
-		link: "eee",
+		link: "https://www.instagram.com/stamfordthailand/",
 	},
 	{
 		imgUrl: "/assets/images/logos/student-engagment.png",
 		title: "Student Engagement",
 		description:
 			"A department that mainly responsible for the student activities and development, including Scholarship.",
-		link: "eee",
+		link: "https://www.instagram.com/studentengagementstiu/",
 	},
 	{
 		imgUrl: "/assets/images/logos/study-plan.png",
@@ -84,7 +85,8 @@ function QuickLinkCard({ title, description, link, imgUrl }: QuickLinkCardProps)
 			<Card.Section className="flex items-center px-2 pb-2">{description}</Card.Section>
 
 			<Card.Section className="row mt-auto flex items-center gap-x-2 px-2 pb-2">
-				<Button className="w-full">Open</Button>
+				<Link className="w-full" target="blank" href={link}>
+					<Button className="w-full">Open</Button></Link>
 				<Tooltip label="open source">
 					<ActionIcon variant="outline" color="blue" size="lg">
 						<FaArrowUpRightFromSquare />
