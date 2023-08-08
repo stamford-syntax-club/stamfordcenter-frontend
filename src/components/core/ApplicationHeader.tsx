@@ -134,12 +134,12 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 						</div>
 
 						{/* Search */}
-						<div className="ml-auto w-[18rem] mr-60">
+						<div className="ml-auto lg:mr-56 lg:w-[20rem]">
 							<TextInput
-								className="rounder-lg"
 								icon={<FaSearch />}
 								placeholder="Search in Stamford Center"
 								variant="filled"
+								size="md"
 							/>
 						</div>
 					</div>

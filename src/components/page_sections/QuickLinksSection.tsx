@@ -87,7 +87,9 @@ function QuickLinkCard({ title, description, link, imgUrl }: QuickLinkCardProps)
 			<Card.Section className="row mt-auto flex items-center gap-x-2 px-2 pb-2">
 				<div className="w-full">
 					<Link target="blank" href={link}>
-						<Button className="w-full">Open</Button></Link></div>
+						<Button className="w-full">Open</Button>
+					</Link>
+				</div>
 				<Tooltip label="open source">
 					<ActionIcon variant="outline" color="blue" size="lg">
 						<FaArrowUpRightFromSquare />
