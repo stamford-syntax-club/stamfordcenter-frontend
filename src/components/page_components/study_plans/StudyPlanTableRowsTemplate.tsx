@@ -22,7 +22,7 @@ export function StudyPlanTableRowsTemplate({ allValues, filteredValues, handlers
 							handlers.setItemProp(index, "checked", event.currentTarget.checked); // Use that index to update the item
 						}}
 					/>
-					{element.major}
+					{element.major} ({element.major_abbrv})
 				</div>
 			</td>
 			<td>{element.year}</td>

@@ -2,6 +2,7 @@
 export interface StudyPlanElement {
 	faculty: string;
 	major: string;
+	major_abbrv: string;
 	year: string;
 	language: string;
 	checked: boolean;
