@@ -28,10 +28,6 @@ async function downloadFile(element: StudyPlanElement) {
 	}
 }
 
-async function previewFile(element: StudyPlanElement) {
-	window.open(`https://center-be.stamford.dev/api/get_files/${element.fileKey}`, "_blank");
-}
-
 export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 	const [values, handlers] = useListState(elements);
 	const [searchString, setSearchString] = useDebouncedState("", 500);
@@ -62,7 +58,7 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
 
 		for (const element of checkedStudyPlanElements) {
-			previewFile(element);
+			window.open(`https://center-be.stamford.dev/api/get_files/${element.fileKey}`, "_blank");
 		}
 	}
 
