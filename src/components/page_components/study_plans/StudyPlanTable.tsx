@@ -14,18 +14,9 @@ async function downloadFile(element: StudyPlanElement) {
 	const fileUrl = `https://center-be.stamford.dev/api/get_files/${element.fileKey}?download=true`;
 
 	try {
-		const response = await fetch(fileUrl);
-
-		if (!response.ok) {
-			console.error("Network response was not OK", response);
-			return;
-		}
-
-		const blob = await response.blob();
-		const url = window.URL.createObjectURL(blob);
-
 		const a = document.createElement("a");
-		a.href = url;
+		a.href = fileUrl;
+		a.target = "_blank";
 		a.download = `${element.major}_${element.year}_${element.language}.pdf`;
 		a.style.display = "none"; // Hide the element from view
 
