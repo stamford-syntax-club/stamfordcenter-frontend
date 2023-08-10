@@ -69,8 +69,6 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 
 	function handlePreview() {
 		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
-		// TODO: preview all in new tabs
-		console.log("Preview", checkedStudyPlanElements);
 
 		for (const element of checkedStudyPlanElements) {
 			previewFile(element);

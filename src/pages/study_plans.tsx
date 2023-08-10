@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import useSWR from "swr";
 
-async function fetcher(url: string) {
+async function fetcher(url: string): Promise<StudyPlanElement[]> {
 	const response = await fetch(url);
 
 	if (!response.ok) {
@@ -24,24 +24,19 @@ export default function StudyPlansPage() {
 		if (data && !error) {
 			const uniqueFaculties = new Map();
 
-			// TODO: Type this properly
-			data.forEach((element: StudyPlanElement) => {
-				uniqueFaculties.set(element.faculty, [
-					...(uniqueFaculties.get(element.faculty) || []),
-					{
-						faculty: element.faculty,
-						major: element.major,
-						year: element.year,
-						language: element.language,
-						checked: false,
-						fileKey: element.fileKey,
-						key: randomId(),
-					},
-				]);
-			});
+			for (const element of data) {
+				const faculty = element.faculty;
 
-			console.log("Data:", data);
-			console.log("Faculties:", uniqueFaculties);
+				if (!uniqueFaculties.has(faculty)) {
+					uniqueFaculties.set(faculty, []);
+				}
+
+				uniqueFaculties.get(faculty).push({
+					...element,
+					checked: false,
+					key: randomId(),
+				});
+			}
 
 			setFaculties(uniqueFaculties);
 		} else if (error) {
