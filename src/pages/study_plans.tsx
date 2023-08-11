@@ -1,158 +1,49 @@
-import { ActionIcon, Checkbox, Table, Tabs, Text, TextInput, Tooltip } from "@mantine/core";
-import { UseListStateHandlers, randomId, useListState } from "@mantine/hooks";
-import { useState } from "react";
-import { FaDownload, FaEye, FaSearch } from "react-icons/fa";
+import { StudyPlanTable } from "@components/page_components/study_plans/StudyPlanTable";
+import { Skeleton, Tabs, Text } from "@mantine/core";
+import { randomId } from "@mantine/hooks";
+import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElement";
+import { useEffect, useState } from "react";
 
-interface StudyPlanElement {
-	major: string;
-	year: string;
-	language: string;
-	checked: boolean;
-	key: string;
-}
+import useSWR from "swr";
 
-interface StudyPlanTableRowsTemplateProps {
-	allValues: StudyPlanElement[];
-	filteredValues: StudyPlanElement[];
-	handlers: UseListStateHandlers<StudyPlanElement>;
-}
+async function fetcher(url: string): Promise<StudyPlanElement[]> {
+	const response = await fetch(url);
 
-interface StudyPlanTableProps {
-	elements: StudyPlanElement[];
-}
-
-// TODO: These should come from the db
-const businessStudyPlanElements: StudyPlanElement[] = [
-	{ major: "Entrepreneurship (ENT)", year: "2022", language: "English", checked: false, key: randomId() },
-	{ major: "Finance and Banking (FNB)", year: "2021", language: "Bilingual", checked: false, key: randomId() },
-	{ major: "Marketing Management (MKT)", year: "2022", language: "Chinese", checked: false, key: randomId() },
-	{ major: "International Business (IBS)", year: "2022", language: "Thai", checked: false, key: randomId() },
-	{ major: "Supply Chain Management (SCM)", year: "2022", language: "English", checked: false, key: randomId() },
-	{ major: "Human Resources Management (HRM)", year: "2022", language: "English", checked: false, key: randomId() },
-];
-
-const comArtsStudyPlanElements = [
-	{ major: "Journalism (JRN)", year: "2022", language: "English", checked: false, key: randomId() },
-	{ major: "Advertising (ADV)", year: "2021", language: "Bilingual", checked: false, key: randomId() },
-	{ major: "Film and Television (FTV)", year: "2022", language: "Chinese", checked: false, key: randomId() },
-	{ major: "Public Relations (PR)", year: "2022", language: "Thai", checked: false, key: randomId() },
-	{ major: "Visual Communication Design (VCD)", year: "2022", language: "English", checked: false, key: randomId() },
-	{ major: "Creative Writing (CRW)", year: "2022", language: "English", checked: false, key: randomId() },
-];
-
-function StudyPlanTableRowsTemplate({ allValues, filteredValues, handlers }: StudyPlanTableRowsTemplateProps) {
-	const rows = filteredValues.map((element, ind) => (
-		<tr key={"tr_" + element.key}>
-			<td>
-				<div className="flex flex-row gap-x-2">
-					<Checkbox
-						className="mr-4"
-						checked={element.checked}
-						onChange={(event) => {
-							const key = element.key; // Get the key of the current element
-							const index = allValues.findIndex((item) => item.key === key); // Find the index based on the key
-							handlers.setItemProp(index, "checked", event.currentTarget.checked); // Use that index to update the item
-						}}
-					/>
-					{element.major}
-				</div>
-			</td>
-			<td>{element.year}</td>
-			<td>{element.language}</td>
-		</tr>
-	));
-
-	return <>{rows}</>;
-}
-
-function StudyPlanTable({ elements }: StudyPlanTableProps) {
-	const [values, handlers] = useListState(elements);
-	const [searchString, setSearchString] = useState("");
-
-	const allChecked = values.every((value) => value.checked);
-	const indeterminate = values.some((value) => value.checked) && !allChecked;
-
-	function getAllCheckedStudyPlanElements() {
-		return values.filter((value) => value.checked);
+	if (!response.ok) {
+		throw new Error("Network response was not ok");
 	}
 
-	function handleDownload() {
-		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
-		// TODO: download all
-		console.log("Download", checkedStudyPlanElements);
-	}
-
-	function handlePreview() {
-		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
-		// TODO: preview all in new tabs
-		console.log("Preview", checkedStudyPlanElements);
-	}
-
-	const filteredValues = values.filter((value) => value.major.toLowerCase().includes(searchString.toLowerCase()));
-
-	function handleAllCheckedChange(event: React.ChangeEvent<HTMLInputElement>) {
-		handlers.setState((current) => current.map((value) => ({ ...value, checked: !allChecked })));
-	}
-
-	return (
-		<Table striped highlightOnHover>
-			<caption>
-				<div className="flex flex-row items-center">
-					{/* Table search input */}
-					<div className="ml-2">
-						<TextInput
-							icon={<FaSearch />}
-							placeholder="Search in table"
-							variant="filled"
-							value={searchString}
-							onChange={(event) => setSearchString(event.currentTarget.value)}
-						/>
-					</div>
-
-					{/* Table action buttons, download/preview */}
-					<div className="ml-auto mr-2 flex flex-row gap-x-2">
-						<Tooltip.Group openDelay={500}>
-							<Tooltip label="Download">
-								<ActionIcon variant="filled" onClick={handleDownload}>
-									<FaDownload />
-								</ActionIcon>
-							</Tooltip>
-
-							<Tooltip label="Preview">
-								<ActionIcon variant="outline" onClick={handlePreview}>
-									<FaEye />
-								</ActionIcon>
-							</Tooltip>
-						</Tooltip.Group>
-					</div>
-				</div>
-			</caption>
-			<thead>
-				<tr>
-					<th>
-						<div className="flex flex-row gap-x-2">
-							<Checkbox
-								className="mr-4"
-								checked={allChecked}
-								indeterminate={indeterminate}
-								transitionDuration={0}
-								onChange={handleAllCheckedChange}
-							/>
-							Major
-						</div>
-					</th>
-					<th>Year</th>
-					<th>Language</th>
-				</tr>
-			</thead>
-			<tbody>
-				<StudyPlanTableRowsTemplate allValues={values} filteredValues={filteredValues} handlers={handlers} />
-			</tbody>
-		</Table>
-	);
+	return response.json();
 }
 
 export default function StudyPlansPage() {
+	const { data, error, isLoading } = useSWR("https://center-be.stamford.dev/api/study_plans", fetcher);
+	const [faculties, setFaculties] = useState(new Map<string, StudyPlanElement[]>());
+
+	useEffect(() => {
+		if (data && !error) {
+			const uniqueFaculties = new Map();
+
+			for (const element of data) {
+				const faculty = element.faculty;
+
+				if (!uniqueFaculties.has(faculty)) {
+					uniqueFaculties.set(faculty, []);
+				}
+
+				uniqueFaculties.get(faculty).push({
+					...element,
+					checked: false,
+					key: randomId(),
+				});
+			}
+
+			setFaculties(uniqueFaculties);
+		} else if (error) {
+			console.error(error);
+		}
+	}, [data, error]);
+
 	return (
 		<div className="container relative mx-auto">
 			<div className="w-full">
@@ -168,20 +59,23 @@ export default function StudyPlansPage() {
 			</div>
 
 			<div className="mt-16">
-				<Tabs radius={"xs"} variant="outline" defaultValue="fac_business">
-					<Tabs.List>
-						<Tabs.Tab value="fac_business">Faculty of Business and Technology</Tabs.Tab>
-						<Tabs.Tab value="fac_comarts">Faculty of Communication Arts and Design</Tabs.Tab>
-					</Tabs.List>
+				<Skeleton height={400} visible={isLoading}>
+					<Tabs className="mb-16" radius={"xs"} variant="outline" defaultValue="Business and Technology">
+						<Tabs.List>
+							{Array.from(faculties.keys()).map((faculty) => (
+								<Tabs.Tab key={"tabtab" + faculty} value={faculty}>
+									Faculty of {faculty}
+								</Tabs.Tab>
+							))}
+						</Tabs.List>
 
-					<Tabs.Panel value="fac_business" pt="xs">
-						<StudyPlanTable elements={businessStudyPlanElements} />
-					</Tabs.Panel>
-
-					<Tabs.Panel value="fac_comarts" pt="xs">
-						<StudyPlanTable elements={comArtsStudyPlanElements} />
-					</Tabs.Panel>
-				</Tabs>
+						{Array.from(faculties.entries()).map(([faculty, elements]) => (
+							<Tabs.Panel key={"tabpanel" + faculty} value={faculty} pt="xs">
+								<StudyPlanTable elements={elements} />
+							</Tabs.Panel>
+						))}
+					</Tabs>
+				</Skeleton>
 			</div>
 		</div>
 	);

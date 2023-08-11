@@ -12,6 +12,7 @@ export default function ApplicationShell({ children }: { children: React.ReactNo
 			styles={{
 				main: {
 					background: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0],
+					overflow: "auto",
 				},
 			}}
 			navbarOffsetBreakpoint="sm"
