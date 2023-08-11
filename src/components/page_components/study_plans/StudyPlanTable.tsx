@@ -9,9 +9,12 @@ interface StudyPlanTableProps {
 	elements: StudyPlanElement[];
 }
 
+const API_BASE_LINK =
+	process.env.NODE_ENV === "production" ? "https://center-be.stamford.dev" : "https://center-be-beta.stamford.dev";
+
 // XD
 async function downloadFile(element: StudyPlanElement) {
-	const fileUrl = `https://center-be.stamford.dev/api/get_files/${element.fileKey}?download=true`;
+	const fileUrl = `${API_BASE_LINK}/api/get_files/${element.fileKey}?download=true`;
 
 	try {
 		const a = document.createElement("a");
@@ -58,7 +61,7 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
 
 		for (const element of checkedStudyPlanElements) {
-			window.open(`https://center-be.stamford.dev/api/get_files/${element.fileKey}`, "_blank");
+			window.open(`${API_BASE_LINK}/api/get_files/${element.fileKey}`, "_blank");
 		}
 	}
 
