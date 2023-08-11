@@ -1,5 +1,6 @@
 import { ActionIcon, Checkbox, Table, TextInput, Tooltip } from "@mantine/core";
 import { useDebouncedState, useListState } from "@mantine/hooks";
+import { notifications } from "@mantine/notifications";
 import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElement";
 import { useState } from "react";
 import { FaDownload, FaEye, FaSearch } from "react-icons/fa";
@@ -28,6 +29,12 @@ async function downloadFile(element: StudyPlanElement) {
 		document.body.removeChild(a); // Remove the element from the DOM
 	} catch (error) {
 		console.error(error);
+
+		notifications.show({
+			color: "red",
+			title: "Download Failed",
+			message: "Something went wrong with the download. Please try again later.",
+		});
 	}
 }
 

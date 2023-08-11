@@ -2,6 +2,7 @@ import "../styles/globals.css";
 
 import ApplicationShell from "@components/core/ApplicationShell";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 import { AppProps } from "next/app";
 import Head from "next/head";
 
@@ -26,6 +27,7 @@ export default function App(props: AppProps) {
 					colorScheme: "dark",
 				}}
 			>
+				<Notifications />
 				<ApplicationShell>
 					<Component {...pageProps} />
 				</ApplicationShell>
