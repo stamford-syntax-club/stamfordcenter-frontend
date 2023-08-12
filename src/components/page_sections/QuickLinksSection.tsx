@@ -38,16 +38,16 @@ const quickLinkCards = [
 		imgUrl: "/assets/images/logos/van.png",
 		title: "Van Schedule",
 		description: "A transportation provide by STIU for the students and staff each term.",
-		link: "eee",
-		originalLink: "eee",
+		link: "https://center-be.stamford.dev/api/get_files/1_2023_van_schedule.pdf",
+		originalLink: "https://center-be.stamford.dev/api/get_files/1_2023_van_schedule.pdf",
 	},
 	{
 		imgUrl: "/assets/images/logos/calender.png",
 		title: "Academic Calendar",
 		description:
 			"The calendar that tell you about important academic day in each term, including holidays, exam days, and many more.",
-		link: "eee",
-		originalLink: "eee",
+		link: "https://center-be.stamford.dev/api/get_files/1_2023_academic_calendar.pdf",
+		originalLink: "https://center-be.stamford.dev/api/get_files/1_2023_academic_calendar.pdfee",
 	},
 	{
 		imgUrl: "/assets/images/logos/student-council.png",
