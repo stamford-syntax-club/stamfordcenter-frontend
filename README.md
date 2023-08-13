@@ -60,6 +60,6 @@ We welcome all contributions! Please read our [CONTRIBUTING](CONTRIBUTING.md) gu
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📧 Contact
-For any queries, please feel free to reach out to us at [email](mailto:some-email@example.com).
+For any queries, please feel free to reach out to us at [admin@stamford.dev](mailto:admin@stamford.dev).
 
 Make the most of your Stamford experience with us~!
