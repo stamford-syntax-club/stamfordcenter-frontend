@@ -4,6 +4,8 @@ import { randomId } from "@mantine/hooks";
 import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElement";
 import { useEffect, useState } from "react";
 
+import Image from "next/image";
+
 import useSWR from "swr";
 
 async function fetcher(url: string): Promise<StudyPlanElement[]> {
@@ -46,15 +48,21 @@ export default function StudyPlansPage() {
 
 	return (
 		<div className="container relative mx-auto">
-			<div className="w-full">
-				<h1>Curriculum Resources</h1>
-				<div className="max-w-2xl">
-					<Text>
-						Explore Stamford&apos;s collection of curriculum files for all majors. Find study plans, course
-						outlines, and academic materials tailored to your program. Browse by major and access the
-						resources to guide your academic journey at Stamford Center. Need help? Contact your academic
-						advisor.
-					</Text>
+			<div className="flex w-full flex-row items-center">
+				<div>
+					<h1>Curriculum Resources</h1>
+					<div className="max-w-2xl">
+						<Text>
+							Explore Stamford&apos;s collection of curriculum files for all majors. Find study plans,
+							course outlines, and academic materials tailored to your program. Browse by major and access
+							the resources to guide your academic journey at Stamford Center. Need help? Contact your
+							academic advisor.
+						</Text>
+					</div>
+				</div>
+
+				<div className="relative ml-16 hidden aspect-square h-44 lg:inline">
+					<Image fill src="/assets/images/study_plans/books.png" alt="Study Plans" />
 				</div>
 			</div>
 
