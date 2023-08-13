@@ -23,10 +23,6 @@ const navigationItems: NavigationItem[] = [
 		href: "/",
 	},
 	{
-		title: "Reg Announcement",
-		href: "/news",
-	},
-	{
 		title: "Undergraduate",
 		href: "/undergraduate",
 		subitems: [
@@ -37,8 +33,8 @@ const navigationItems: NavigationItem[] = [
 		],
 	},
 	{
-		title: "Student Engagement",
-		href: "/studentengagement",
+		title: "Study Plans",
+		href: "/study_plans",
 	},
 	{
 		title: "More",
