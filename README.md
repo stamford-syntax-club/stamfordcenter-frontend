@@ -16,6 +16,7 @@ Our goal is to provide a centralized platform where students can stay connected 
 ## 🛠️ Technologies Used
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 - [Mantine](https://mantine.dev/)
 - [Emotion](https://emotion.sh/docs/introduction)
 - [Day.js](https://day.js.org/)
