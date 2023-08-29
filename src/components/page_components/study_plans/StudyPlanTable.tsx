@@ -78,6 +78,8 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 		handlers.setState((current) => current.map((value) => ({ ...value, checked: !allChecked })));
 	}
 
+	const hasSelection = values.some((value) => value.checked);
+
 	return (
 		<Table striped highlightOnHover>
 			<caption>
@@ -96,13 +98,17 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 					<div className="ml-auto mr-2 flex flex-row gap-x-2">
 						<Tooltip.Group openDelay={500}>
 							<Tooltip label="Download">
-								<ActionIcon disabled={downloading} variant="filled" onClick={handleDownload}>
+								<ActionIcon
+									disabled={downloading || !hasSelection}
+									variant="filled"
+									onClick={handleDownload}
+								>
 									<FaDownload />
 								</ActionIcon>
 							</Tooltip>
 
 							<Tooltip label="Preview">
-								<ActionIcon variant="outline" onClick={handlePreview}>
+								<ActionIcon disabled={!hasSelection} variant="outline" onClick={handlePreview}>
 									<FaEye />
 								</ActionIcon>
 							</Tooltip>
