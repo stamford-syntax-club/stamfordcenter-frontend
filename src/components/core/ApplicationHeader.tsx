@@ -16,7 +16,7 @@ interface NavigationItem {
 	subitems?: NavigationItem[];
 }
 
-const navigationItems: NavigationItem[] = [
+export const navigationItems: NavigationItem[] = [
 	{
 		title: "Home",
 		href: "/",
@@ -40,6 +40,7 @@ const navigationItems: NavigationItem[] = [
 		href: "/more",
 	},
 ];
+
 
 function NormalNavLink({ title, href }: NavigationItem) {
 	return (
