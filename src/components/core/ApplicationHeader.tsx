@@ -159,6 +159,13 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 								/>
 							</div>
 						</div>
+
+						{/* Report Problem */}
+						<div className="relative cursor-pointer">
+							<Link href="https://forms.office.com/r/z48ExG8dPs">
+								<UnstyledButton className="w-40 h-full p-2">Report Problem</UnstyledButton>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>
