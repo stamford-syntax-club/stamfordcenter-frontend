@@ -88,7 +88,7 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 	return (
 		<Header height={70} p="sm">
 			{/* Main div */}
-			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+			<div style={{ display: "flex", alignItems: "center", height: "100%" }} className="bro">
 				{/* Holder div */}
 				<div className="container relative mx-auto h-full">
 					{/* Inner div */}
@@ -162,9 +162,9 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 						</div>
 
 						{/* Report Problem */}
-						<div className="ml-3">
-							<Button component="a" href="https://forms.office.com/r/z48ExG8dPs" variant="subtle">
-								Report Problem
+						<div className="sm:ml-0 lg:ml-3">
+							<Button variant="subtle">
+								<a className="no-underline text-sky-300" href="https://forms.office.com/r/z48ExG8dPs">Report Problem</a>
 							</Button>
 						</div>
 					</div>
