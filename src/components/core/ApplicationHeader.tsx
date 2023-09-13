@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
+import { Button } from '@mantine/core';
 
 interface ApplicationHeaderProps {
 	opened: boolean;
@@ -158,6 +159,13 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 									])}
 								/>
 							</div>
+						</div>
+
+						{/* Report Problem */}
+						<div className="sm:ml-0 lg:ml-3">
+							<Button variant="subtle">
+								<a className="no-underline text-sky-300" href="https://forms.office.com/r/z48ExG8dPs">Report Problem</a>
+							</Button>
 						</div>
 					</div>
 				</div>
