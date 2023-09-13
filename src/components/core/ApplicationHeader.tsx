@@ -88,7 +88,7 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 	return (
 		<Header height={70} p="sm">
 			{/* Main div */}
-			<div style={{ display: "flex", alignItems: "center", height: "100%" }} className="bro">
+			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
 				{/* Holder div */}
 				<div className="container relative mx-auto h-full">
 					{/* Inner div */}
