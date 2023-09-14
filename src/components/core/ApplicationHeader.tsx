@@ -164,7 +164,7 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 						{/* Report Problem */}
 						<div className="sm:ml-0 lg:ml-3">
 							<Button variant="subtle">
-								<a className="no-underline text-sky-300" href="https://forms.office.com/r/z48ExG8dPs">Report Problem</a>
+								<a className="no-underline text-sky-300" href="https://forms.office.com/r/z48ExG8dPs" target="_blank">Report Problem</a>
 							</Button>
 						</div>
 					</div>
