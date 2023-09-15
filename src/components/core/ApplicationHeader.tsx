@@ -1,10 +1,9 @@
-import { Burger, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { Burger, Button, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
 import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
-import { Button } from '@mantine/core';
 
 interface ApplicationHeaderProps {
 	opened: boolean;
@@ -162,10 +161,11 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 						</div>
 
 						{/* Report Problem */}
-						<div className="sm:ml-0 lg:ml-3">
-							<Button variant="subtle">
-								<a className="no-underline text-sky-300" href="https://forms.office.com/r/z48ExG8dPs" target="_blank">Report Problem</a>
-							</Button>
+						{/* TODO: Move this into the mobile navbar on breakpoints that have it */}
+						<div className="lg:ml-2">
+							<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
+								<Button variant="subtle">Report Problem</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
