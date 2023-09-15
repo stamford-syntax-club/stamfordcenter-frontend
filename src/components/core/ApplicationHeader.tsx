@@ -1,4 +1,4 @@
-import { Burger, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { Burger, Button, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
 import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
@@ -158,6 +158,14 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 									])}
 								/>
 							</div>
+						</div>
+
+						{/* Report Problem */}
+						{/* TODO: Move this into the mobile navbar on breakpoints that have it */}
+						<div className="lg:ml-2">
+							<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
+								<Button variant="subtle">Report Problem</Button>
+							</Link>
 						</div>
 					</div>
 				</div>
