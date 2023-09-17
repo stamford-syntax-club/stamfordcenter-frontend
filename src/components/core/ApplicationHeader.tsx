@@ -27,10 +27,16 @@ const navigationItems: NavigationItem[] = [
 		href: "/undergraduate",
 		subitems: [
 			{
-				title: "idk",
-				href: "/xd",
+				title: "Contact Information",
+				href: "/contact_info",
 			},
+
+			
+			
 		],
+		
+
+
 	},
 	{
 		title: "Study Plans",

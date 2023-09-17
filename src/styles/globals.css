@@ -16,3 +16,12 @@
 	background-image: linear-gradient(to right, #1c7ed6, #4dabf7, #339af0, #1c7ed6);
 	animation: gradient-text-animation 4s infinite linear;
 }
+
+.subitem {
+	display: inline-block;
+	
+}
+
+.nav-link {
+	margin-right: 10px;
+  }
