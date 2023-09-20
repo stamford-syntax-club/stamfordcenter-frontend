@@ -39,7 +39,8 @@ const quickLinkCards = [
 		title: "Van Schedule",
 		description: "A transportation provide by STIU for the students and staff each term.",
 		link: "https://center-be.stamford.dev/api/files/1_2023_van_schedule.pdf",
-		originalLink: "https://learn.stamford.edu/bbcswebdav/library/Library%20Content/Share%20Content/Welcome%20Page%20%28UG%29/Files/Term1-2023/van%20schedule%20TERM%201.2023%20-%2024July%20-%2020OCT23.pdf",
+		originalLink:
+			"https://learn.stamford.edu/bbcswebdav/library/Library%20Content/Share%20Content/Welcome%20Page%20%28UG%29/Files/Term1-2023/van%20schedule%20TERM%201.2023%20-%2024July%20-%2020OCT23.pdf",
 	},
 	{
 		imgUrl: "/assets/images/logos/calender.png",
@@ -47,7 +48,8 @@ const quickLinkCards = [
 		description:
 			"The calendar that tell you about important academic day in each term, including holidays, exam days, and many more.",
 		link: "https://center-be.stamford.dev/api/files/1_2023_academic_calendar.pdf",
-		originalLink: "https://learn.stamford.edu/bbcswebdav/library/Library%20Content/Share%20Content/Welcome%20Page%20%28UG%29/Files/Term1-2023/1-2023_UG_Academic%20Calendar_Student%20Version_Updated%2021%20April%202023.pdf",
+		originalLink:
+			"https://learn.stamford.edu/bbcswebdav/library/Library%20Content/Share%20Content/Welcome%20Page%20%28UG%29/Files/Term1-2023/1-2023_UG_Academic%20Calendar_Student%20Version_Updated%2021%20April%202023.pdf",
 	},
 	{
 		imgUrl: "/assets/images/logos/student-council.png",
@@ -115,7 +117,8 @@ function QuickLinkCard({ title, description, originalLink, link, imgUrl }: Quick
 
 export default function QuickLinksSection() {
 	return (
-		<div className="container mx-auto">
+		// Remove margin bottom later if new sections are added after
+		<div className="container mx-auto mb-8">
 			<h2 className="flex items-center justify-center text-center text-5xl text-white md:text-6xl">
 				Quick Links
 			</h2>
@@ -125,7 +128,7 @@ export default function QuickLinksSection() {
 				Microsoft tools, social media, and more. Explore these quick links and stay connected with
 				Stamford&apos;s digital world.
 			</div>
-			<Group position="center">
+			<Group justify="center">
 				{quickLinkCards.map((card) => (
 					<QuickLinkCard key={"quicklinkcard" + card.title} {...card} />
 				))}

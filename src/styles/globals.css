@@ -16,3 +16,11 @@
 	background-image: linear-gradient(to right, #1c7ed6, #4dabf7, #339af0, #1c7ed6);
 	animation: gradient-text-animation 4s infinite linear;
 }
+
+a {
+	color: inherit;
+}
+
+body {
+	background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+}

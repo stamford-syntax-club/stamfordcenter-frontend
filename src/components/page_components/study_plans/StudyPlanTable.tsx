@@ -10,6 +10,7 @@ interface StudyPlanTableProps {
 	elements: StudyPlanElement[];
 }
 
+// TODO: Make the env files .env.local and .env.production.local or w/e
 const API_BASE_LINK =
 	process.env.NODE_ENV === "production" ? "https://center-be.stamford.dev" : "https://center-be-beta.stamford.dev";
 
@@ -74,20 +75,20 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 
 	const filteredValues = values.filter((value) => value.major.toLowerCase().includes(searchString.toLowerCase()));
 
-	function handleAllCheckedChange(event: React.ChangeEvent<HTMLInputElement>) {
+	function handleAllCheckedChange(_: React.ChangeEvent<HTMLInputElement>) {
 		handlers.setState((current) => current.map((value) => ({ ...value, checked: !allChecked })));
 	}
 
 	const hasSelection = values.some((value) => value.checked);
 
 	return (
-		<Table striped highlightOnHover>
-			<caption>
+		<Table striped highlightOnHover captionSide="top">
+			<Table.Caption>
 				<div className="flex flex-row items-center">
 					{/* Table search input */}
 					<div className="ml-2">
 						<TextInput
-							icon={<FaSearch />}
+							leftSection={<FaSearch />}
 							placeholder="Search in table"
 							variant="filled"
 							onChange={(event) => setSearchString(event.currentTarget.value)}
@@ -115,28 +116,25 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 						</Tooltip.Group>
 					</div>
 				</div>
-			</caption>
-			<thead>
-				<tr>
-					<th>
-						<div className="flex flex-row gap-x-2">
-							<Checkbox
-								className="mr-4"
-								checked={allChecked}
-								indeterminate={indeterminate}
-								transitionDuration={0}
-								onChange={handleAllCheckedChange}
-							/>
-							Major
-						</div>
-					</th>
-					<th>Year</th>
-					<th>Language</th>
-				</tr>
-			</thead>
-			<tbody>
+			</Table.Caption>
+			<Table.Thead>
+				<Table.Tr>
+					<Table.Th className="flex flex-row gap-x-2">
+						<Checkbox
+							className="mr-4"
+							checked={allChecked}
+							indeterminate={indeterminate}
+							onChange={handleAllCheckedChange}
+						/>
+						Major
+					</Table.Th>
+					<Table.Th>Year</Table.Th>
+					<Table.Th>Language</Table.Th>
+				</Table.Tr>
+			</Table.Thead>
+			<Table.Tbody>
 				<StudyPlanTableRowsTemplate allValues={values} filteredValues={filteredValues} handlers={handlers} />
-			</tbody>
+			</Table.Tbody>
 		</Table>
 	);
 }

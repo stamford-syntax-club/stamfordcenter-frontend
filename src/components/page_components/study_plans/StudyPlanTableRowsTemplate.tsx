@@ -1,4 +1,4 @@
-import { Checkbox } from "@mantine/core";
+import { Checkbox, Table } from "@mantine/core";
 import { UseListStateHandlers } from "@mantine/hooks";
 import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElement";
 
@@ -10,8 +10,8 @@ interface StudyPlanTableRowsTemplateProps {
 
 export function StudyPlanTableRowsTemplate({ allValues, filteredValues, handlers }: StudyPlanTableRowsTemplateProps) {
 	const rows = filteredValues.map((element, ind) => (
-		<tr key={"tr_" + element.key}>
-			<td>
+		<Table.Tr key={"tr_" + element.key}>
+			<Table.Td>
 				<div className="flex flex-row items-center gap-x-2">
 					<Checkbox
 						className="mr-4"
@@ -24,10 +24,10 @@ export function StudyPlanTableRowsTemplate({ allValues, filteredValues, handlers
 					/>
 					{element.major} ({element.major_abbrv})
 				</div>
-			</td>
-			<td>{element.year}</td>
-			<td>{element.language}</td>
-		</tr>
+			</Table.Td>
+			<Table.Td>{element.year}</Table.Td>
+			<Table.Td>{element.language}</Table.Td>
+		</Table.Tr>
 	));
 
 	return <>{rows}</>;

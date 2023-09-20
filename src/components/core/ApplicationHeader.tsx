@@ -1,14 +1,13 @@
-import { Burger, Button, Code, Header, MantineTheme, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { AppShell, Burger, Button, Code, Menu, TextInput, UnstyledButton } from "@mantine/core";
 import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
 
 interface ApplicationHeaderProps {
 	opened: boolean;
-	setOpened: React.Dispatch<React.SetStateAction<boolean>>;
-	theme: MantineTheme;
+	toggle: () => void;
 }
 
 interface NavigationItem {
@@ -71,7 +70,7 @@ function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
 	);
 }
 
-export default function ApplicationHeader({ opened, setOpened, theme }: ApplicationHeaderProps) {
+export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
 	const searchbarRef = useRef<HTMLInputElement>(null);
 	useHotkeys([
 		[
@@ -85,21 +84,14 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 	]);
 
 	return (
-		<Header height={70} p="sm">
+		<AppShell.Header p="sm">
 			{/* Main div */}
 			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
 				{/* Holder div */}
 				<div className="container relative mx-auto h-full">
 					{/* Inner div */}
 					<div className="flex h-full flex-row items-center">
-						<Burger
-							className="block lg:hidden"
-							opened={opened}
-							onClick={() => setOpened((o) => !o)}
-							size="lg"
-							color={theme.colors.gray[6]}
-							mr="xl"
-						/>
+						<Burger opened={opened} onClick={toggle} hiddenFrom="md" size="lg" />
 
 						{/* Stamford Logo */}
 						<div className="relative aspect-[3.664] h-full">
@@ -149,7 +141,7 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 									ref={searchbarRef}
 									placeholder="Search"
 									variant="filled"
-									icon={<FaSearch />}
+									leftSection={<FaSearch />}
 									rightSectionWidth={70}
 									rightSection={<Code className="hidden xl:inline">Ctrl + K</Code>}
 									onKeyDown={getHotkeyHandler([
@@ -170,6 +162,6 @@ export default function ApplicationHeader({ opened, setOpened, theme }: Applicat
 					</div>
 				</div>
 			</div>
-		</Header>
+		</AppShell.Header>
 	);
 }

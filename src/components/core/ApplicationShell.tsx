@@ -1,26 +1,32 @@
 import { AppShell, useMantineTheme } from "@mantine/core";
-import { useState } from "react";
+import { useDisclosure } from "@mantine/hooks";
 import ApplicationHeader from "./ApplicationHeader";
 import ApplicationNavigationBar from "./ApplicationNavigationBar";
 
 export default function ApplicationShell({ children }: { children: React.ReactNode }) {
 	const theme = useMantineTheme();
-	const [opened, setOpened] = useState(false);
+	const [opened, { toggle }] = useDisclosure();
 
 	return (
 		<AppShell
-			styles={{
-				main: {
-					background: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.colors.gray[0],
-					overflow: "auto",
-				},
-			}}
-			navbarOffsetBreakpoint="sm"
-			asideOffsetBreakpoint="sm"
-			navbar={<ApplicationNavigationBar opened={opened} />}
-			header={<ApplicationHeader opened={opened} setOpened={setOpened} theme={theme} />}
+			header={{ height: 70 }}
+			navbar={{ width: 300, breakpoint: "sm", collapsed: { desktop: true, mobile: !opened } }}
+			styles={
+				{
+					// main: {
+					// 	background: "light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-8))", // ? Does this even work?
+					// 	overflow: "auto",
+					// },
+				}
+			}
+			// navbarOffsetBreakpoint="sm"
+			// asideOffsetBreakpoint="sm"
+			padding="md"
 		>
-			{children}
+			<ApplicationHeader opened={opened} toggle={toggle} />
+			<ApplicationNavigationBar opened={opened} />
+
+			<AppShell.Main>{children}</AppShell.Main>
 		</AppShell>
 	);
 }
