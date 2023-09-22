@@ -1,4 +1,173 @@
 import React from 'react';
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+
+
+
+
+export default function contactInfoPage() {
+  return <div className="container mx-auto mt-12">
+    <section className="relative w-full">
+      {/* Header */}
+      <h1>
+      <div className="flex flex-col items-center">
+        <div className="text-5xl font-bold mb-4" >Contact Information</div>
+      </div>
+        </h1>
+
+        {/* Header.Description */}
+        <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+
+        {/* Card 1*/}
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
+          height={160}
+          
+        />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Academic Support</Text>
+       
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        Operation Hours:
+      </Text>
+      
+      <Text>Mon-Fri 08:30 - 17.30</Text>
+
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        Email
+      </Button>
+    </Card>
+     {/* Card 2*/}
+     <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
+          height={160}
+          
+        />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Academic Support</Text>
+       
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        Operation Hours:
+      </Text>
+      
+      <Text>Mon-Fri 08:30 - 17.30</Text>
+
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        Email
+      </Button>
+    </Card>
+
+      {/* Card 3*/}
+      <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
+          height={160}
+          
+        />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Academic Support</Text>
+       
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        Operation Hours:
+      </Text>
+      
+      <Text>Mon-Fri 08:30 - 17.30</Text>
+
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        Email
+      </Button>
+    </Card>
+
+       {/* Card 4*/}
+       <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
+          height={160}
+          
+        />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Academic Support</Text>
+       
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        Operation Hours:
+      </Text>
+      
+      <Text>Mon-Fri 08:30 - 17.30</Text>
+
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        Email
+      </Button>
+    </Card>
+
+        {/* Card 5*/}
+        <Card shadow="sm" padding="lg" radius="md" withBorder>
+      <Card.Section>
+        <Image
+          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
+          height={160}
+          
+        />
+      </Card.Section>
+
+      <Group justify="space-between" mt="md" mb="xs">
+        <Text fw={500}>Academic Support</Text>
+       
+      </Group>
+
+      <Text size="sm" c="dimmed">
+        Operation Hours:
+      </Text>
+      
+      <Text>Mon-Fri 08:30 - 17.30</Text>
+
+      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
+        Email
+      </Button>
+    </Card>
+
+    </section>
+  </div>}
+
+
+
+
+
+// Backup
+
+/*
+<div className="box" style={whiteBoxStyle}>Registrar<br/>Operational Hours:
+  Mon-Fri 8.30 - 17.30</div>
+  <div className="box" style={whiteBoxStyle}>Registrar</div>
+  <div className="box" style={whiteBoxStyle}>Library</div>
+
+  <div className="box" style={whiteBoxStyle}>Finance</div>
+  <div className="box" style={whiteBoxStyle}>IT Support</div>
+  <div className="box" style={whiteBoxStyle}>Student Service</div>
+
+
 
 function Box({
   children,
@@ -137,19 +306,4 @@ const ContactInfoPage: React.FC = () => {
   );
 };
 
-
-export default ContactInfoPage;
-
-
-// Backup
-
-/*
-<div className="box" style={whiteBoxStyle}>Registrar<br/>Operational Hours:
-  Mon-Fri 8.30 - 17.30</div>
-  <div className="box" style={whiteBoxStyle}>Registrar</div>
-  <div className="box" style={whiteBoxStyle}>Library</div>
-
-  <div className="box" style={whiteBoxStyle}>Finance</div>
-  <div className="box" style={whiteBoxStyle}>IT Support</div>
-  <div className="box" style={whiteBoxStyle}>Student Service</div>
   */
