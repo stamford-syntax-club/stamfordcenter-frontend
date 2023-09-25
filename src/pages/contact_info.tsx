@@ -1,9 +1,175 @@
 import React from 'react';
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Card, Image, Text, Badge, Button, Group, Grid } from '@mantine/core';
 
 
+// Student Service Card
+const studentServiceCard = (<Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+<div>
+  <Image
+    src="/assets/images/contact_info/Rectangle 1.png"
+    alt="Rectangle 1"
+    height={160}
+    p={25}
+    mb=""
+  />
+</div>
+
+<Group justify="space-between" mb="xs">
+  <Text fw={500}>Student Service</Text>
+</Group>
+
+<Text size="sm" c="dimmed">
+  Operation Hours:
+</Text>
+
+<Text>Mon-Fri 08:30 - 17.30</Text>
+
+<Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+  Email
+</Button>
+</Card>);
+
+// IT Support Card
+const itSupportCard = (<Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+<div>
+  <Image
+    src="/assets/images/contact_info/Rectangle 1.png"
+    alt="Rectangle 1"
+    height={160}
+    p={25}
+    mb=""
+  />
+</div>
+
+<Group justify="space-between" mb="xs">
+  <Text fw={500}>IT Support</Text>
+</Group>
+
+<Text size="sm" c="dimmed">
+  Operation Hours:
+</Text>
+
+<Text>Mon-Fri 08:30 - 17.30</Text>
+
+<Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+  Email
+</Button>
+</Card>);
+
+// Finance Card
+const financeCard = (<Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+<div>
+  <Image
+    src="/assets/images/contact_info/Rectangle 1.png"
+    alt="Rectangle 1"
+    height={160}
+    p={25}
+    mb=""
+  />
+</div>
+
+<Group justify="space-between" mb="xs">
+  <Text fw={500}>Finance</Text>
+</Group>
+
+<Text size="sm" c="dimmed">
+  Operation Hours:
+</Text>
+
+<Text>Mon-Fri 08:30 - 17.30</Text>
+
+<Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+  Email
+</Button>
+</Card>);
+
+// Library Card
+const libraryCard = (<Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+<div>
+  <Image
+    src="/assets/images/contact_info/Rectangle 1.png"
+    alt="Rectangle 1"
+    height={160}
+    p={25}
+    mb=""
+  />
+</div>
+
+<Group justify="space-between" mb="xs">
+  <Text fw={500}>Library</Text>
+</Group>
+
+<Text size="sm" c="dimmed">
+  Operation Hours:
+</Text>
+
+<Text>Mon-Fri 08:30 - 17.30</Text>
+
+<Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+  Email
+</Button>
+</Card>);
 
 
+// Registra Card
+
+const registraCard = (<Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+<div>
+  <Image
+    src="/assets/images/contact_info/Rectangle 1.png"
+    alt="Rectangle 1"
+    height={160}
+    p={25}
+    mb=""
+  />
+</div>
+
+<Group justify="space-between" mb="xs">
+  <Text fw={500}>Registrar</Text>
+</Group>
+
+<Text size="sm" c="dimmed">
+  Operation Hours:
+</Text>
+
+<Text>Mon-Fri 08:30 - 17.30</Text>
+
+<Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+  Email
+</Button>
+</Card>);
+
+// Academic Support Card
+
+const academicSupportCard = (
+  <Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
+    <div>
+      <Image
+        src="/assets/images/contact_info/Rectangle 1.png"
+        alt="Rectangle 1"
+        height={160}
+        p={25}
+        mb=""
+      />
+    </div>
+
+    <Group justify="space-between" mb="xs">
+      <Text fw={500}>Academic Support</Text>
+    </Group>
+
+    <Text size="sm" c="dimmed">
+      Operation Hours:
+    </Text>
+
+    <Text>Mon-Fri 08:30 - 17.30</Text>
+
+    <Button variant="filled" color="blue" fullWidth mt="lg" radius="md" size="lg">
+      Email
+    </Button>
+  </Card>
+);
+
+// Export
 export default function contactInfoPage() {
   return <div className="container mx-auto mt-12">
     <section className="relative w-full">
@@ -15,139 +181,19 @@ export default function contactInfoPage() {
         </h1>
 
         {/* Header.Description */}
-        <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </div>
+        <Text align="center" className="mb-16">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</Text>
 
-        {/* Card 1*/}
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image
-          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
-          height={160}
-          
-        />
-      </Card.Section>
-
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Academic Support</Text>
-       
-      </Group>
-
-      <Text size="sm" c="dimmed">
-        Operation Hours:
-      </Text>
-      
-      <Text>Mon-Fri 08:30 - 17.30</Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Email
-      </Button>
-    </Card>
-     {/* Card 2*/}
-     <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image
-          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
-          height={160}
-          
-        />
-      </Card.Section>
-
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Academic Support</Text>
-       
-      </Group>
-
-      <Text size="sm" c="dimmed">
-        Operation Hours:
-      </Text>
-      
-      <Text>Mon-Fri 08:30 - 17.30</Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Email
-      </Button>
-    </Card>
-
-      {/* Card 3*/}
-      <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image
-          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
-          height={160}
-          
-        />
-      </Card.Section>
-
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Academic Support</Text>
-       
-      </Group>
-
-      <Text size="sm" c="dimmed">
-        Operation Hours:
-      </Text>
-      
-      <Text>Mon-Fri 08:30 - 17.30</Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Email
-      </Button>
-    </Card>
-
-       {/* Card 4*/}
-       <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image
-          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
-          height={160}
-          
-        />
-      </Card.Section>
-
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Academic Support</Text>
-       
-      </Group>
-
-      <Text size="sm" c="dimmed">
-        Operation Hours:
-      </Text>
-      
-      <Text>Mon-Fri 08:30 - 17.30</Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Email
-      </Button>
-    </Card>
-
-        {/* Card 5*/}
-        <Card shadow="sm" padding="lg" radius="md" withBorder>
-      <Card.Section>
-        <Image
-          src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"
-          height={160}
-          
-        />
-      </Card.Section>
-
-      <Group justify="space-between" mt="md" mb="xs">
-        <Text fw={500}>Academic Support</Text>
-       
-      </Group>
-
-      <Text size="sm" c="dimmed">
-        Operation Hours:
-      </Text>
-      
-      <Text>Mon-Fri 08:30 - 17.30</Text>
-
-      <Button variant="light" color="blue" fullWidth mt="md" radius="md">
-        Email
-      </Button>
-    </Card>
-
+{/* Cards */}
+<Grid align='center'>
+      <Grid.Col span={4}> {academicSupportCard}</Grid.Col>
+      <Grid.Col span={4}> {registraCard}</Grid.Col>
+      <Grid.Col span={4}> {libraryCard}</Grid.Col>
+      <Grid.Col span={4}> {financeCard}</Grid.Col>
+      <Grid.Col span={4}> {itSupportCard}</Grid.Col>
+      <Grid.Col span={4}> {studentServiceCard}</Grid.Col>
+    </Grid>
     </section>
   </div>}
 
