@@ -45,7 +45,7 @@ export default function contactInfoPage() {
 
         {/* Header.Description */}
         <Text align="center" className="mb-16">
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  Explore the diverse departments below to find the contact information you need. Our dedicated staff is ready to help you on your educational journey. Feel free to reach out, and we'll ensure you get the support and information required to succeed during your time at Stamford
 </Text>
 
  {/* Cards */}
