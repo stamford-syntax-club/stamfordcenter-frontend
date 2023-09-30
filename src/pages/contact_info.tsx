@@ -38,7 +38,7 @@ export default function contactInfoPage() {
     <section className="relative w-full">
       {/* Header */}
       <h1>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center text-center">
         <div className="text-5xl font-bold mb-4" >Contact Information</div>
       </div>
         </h1>
