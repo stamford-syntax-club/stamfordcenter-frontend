@@ -1,6 +1,46 @@
 import React from 'react';
 import { Card, Image, Text, Badge, Button, Group, Grid } from '@mantine/core';
 
+interface ContactCardProps {
+  title: string;
+  operationTitle: string;
+  operationTime: string;
+  imgUrl: string;
+}
+
+const contactCards = [
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'Academic Support',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'Registra',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'Library',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'Finance',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'IT Support',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+{ imgUrl: '/assets/images/contact_info/Rectangle 1.png',
+title: 'Student Service',
+operationTitle: 'Operation Hours:',
+operationTime: 'Mon-Fri 08:30 - 17.30',
+},
+]
+
 const CustomCard = ({ title, operationHours, buttonText }) => (
   <Card shadow="sm" padding="lg" radius="md" withBorder h={422} w={308}>
     <div>
