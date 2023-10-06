@@ -1,39 +1,7 @@
-# Ignore local node modules
+Dockerfile
+.dockerignore
 node_modules
-
-# Ignore logs
 npm-debug.log
-
-# Ignore editor folders and files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Ignore build folder (if any)
-dist/
-build/
-
-# Ignore OS generated files
-.DS_Store
-Thumbs.db
-
-# Ignore git files
-.git/
-.gitignore
-
-# Ignore CI/CD config files (if any)
-.gitlab-ci.yml
-.travis.yml
-.circleci/
-
-# Ignore environment files
-.env
-.env.local
-.env.*.local
-
-# Any other generated or temporary files
-*.log
-*.tmp
-*.bak
-*.lock
+README.md
+.next
+.git
