@@ -35,18 +35,16 @@ export default function Home() {
 
 				{/* Header */}
 				<h1>
-					<div className="flex flex-col text-2xl md:text-4xl">
-						<Text className="font-semibold text-white">Welcome to the</Text>
-						<span className="-mt-4 text-5xl md:-mt-6 md:text-6xl">
-							<Text className="gradient-span mr-2 w-fit cursor-pointer bg-clip-text font-extrabold uppercase text-transparent">
-								Stamford Center
-							</Text>
-						</span>
+					<div className="flex flex-col">
+						<Text className="text-2xl font-semibold text-white md:text-4xl">Welcome to the</Text>
+						<Text className="gradient-span mr-2 w-fit cursor-pointer bg-clip-text text-5xl font-extrabold uppercase text-transparent md:text-6xl">
+							Stamford Center
+						</Text>
 					</div>
 				</h1>
 
 				{/* Header.Description */}
-				<div className="-mt-4">
+				<div>
 					<Text c="dimmed" className="w-full max-w-xl text-2xl">
 						Your hub for student success at Stamford International University.
 					</Text>
