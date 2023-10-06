@@ -1,21 +1,39 @@
-# Files and directories to ignore when building the Docker image
-
-# Ignore node_modules and npm cache
+# Ignore local node modules
 node_modules
+
+# Ignore logs
 npm-debug.log
 
-# Ignore development-specific files
-.DS_Store
+# Ignore editor folders and files
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# Ignore version control files and directories
-.git
+# Ignore build folder (if any)
+dist/
+build/
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
+
+# Ignore git files
+.git/
 .gitignore
 
-# Ignore build and output files
-/.next
-/out
+# Ignore CI/CD config files (if any)
+.gitlab-ci.yml
+.travis.yml
+.circleci/
 
-# Ignore Docker-related files
-dockerfile
-.dockerignore
+# Ignore environment files
+.env
+.env.local
+.env.*.local
+
+# Any other generated or temporary files
+*.log
+*.tmp
+*.bak
+*.lock
