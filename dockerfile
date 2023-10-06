@@ -1,26 +1,56 @@
-# ---- Base Node ----
-FROM node:alpine AS base
+FROM node:18-alpine AS base
+
+# Install dependencies only when needed
+FROM base AS deps
+
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json .
 
-# ---- Dependencies ----
-FROM base AS dependencies
-RUN npm install
+# Install dependencies based on the preferred package manager, might migrate to pnpm later, keeping this here.
+COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+RUN \
+    if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    elif [ -f package-lock.json ]; then npm ci; \
+    elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
+    else echo "Lockfile not found." && exit 1; \
+    fi
 
-# ---- Build ----
-FROM dependencies AS build
+
+# Rebuild the source code only when needed
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
+
 RUN npm run build
 
-# ---- Release with Distroless ----
-FROM node:alpine AS release
-COPY --from=dependencies /app/node_modules ./node_modules
-COPY --from=build /app/.next ./.next
-COPY --from=build /app/package.json ./package.json
+# Production image, copy all the files and run next
+FROM base AS runner
+WORKDIR /app
 
-# Expose the port that the Next.js application will run on (by default Next.js uses port 3000)
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder /app/public ./public
+
+# Set the correct permission for prerender cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+# Automatically leverage output traces to reduce image size
+# https://nextjs.org/docs/advanced-features/output-file-tracing
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
+
 EXPOSE 3000
 
-# With Next.js, the start command might look like "next start", but because we're using Distroless
-# which doesn't have a global npm or next installation, you would point directly to the .next folder.
-CMD ["node", "node_modules/next/dist/bin/next", "start"]
+ENV PORT 3000
+# set hostname to localhost
+ENV HOSTNAME "0.0.0.0"
+
+CMD ["node", "server.js"]
