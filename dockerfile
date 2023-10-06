@@ -1,26 +1,26 @@
-# Use the official Node.js image as the base image
-FROM node:alpine
-
-# Set the working directory inside the container
+# ---- Base Node ----
+FROM node:alpine AS base
 WORKDIR /app
+COPY package.json .
 
-# Copy the package.json and package-lock.json (or yarn.lock) to the container
-COPY package.json ./
-
-# Set the NODE_ENV environment variable to "production"
-ENV NODE_ENV=production
-
-# Install the dependencies
+# ---- Dependencies ----
+FROM base AS dependencies
 RUN npm install
 
-# Copy the rest of the application files to the container
+# ---- Build ----
+FROM dependencies AS build
 COPY . .
-
-# Build the production version of the application
 RUN npm run build
 
-# Expose the port that your Next.js application will run on (by default Next.js uses port 3000)
+# ---- Release with Distroless ----
+FROM node:alpine AS release
+COPY --from=dependencies /app/node_modules ./node_modules
+COPY --from=build /app/.next ./.next
+COPY --from=build /app/package.json ./package.json
+
+# Expose the port that the Next.js application will run on (by default Next.js uses port 3000)
 EXPOSE 3000
 
-# Set the command to start your Next.js application in production mode
-CMD ["npm", "start"]
+# With Next.js, the start command might look like "next start", but because we're using Distroless
+# which doesn't have a global npm or next installation, you would point directly to the .next folder.
+CMD ["node", "node_modules/next/dist/bin/next", "start"]
