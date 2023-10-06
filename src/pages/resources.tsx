@@ -2,31 +2,40 @@ import { Divider, Drawer, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Dispatch, SetStateAction, useState } from "react";
 
-interface ResourceCategory {
+interface Resource {
 	name: string;
 	description: string;
 	iconURL: string;
-	files: {
-		fileKey: string;
-		fileURL: string;
-	}[];
+	files: ResourceFile[];
+}
+
+interface ResourceFile {
+	fileKey: string;
+	fileURL: string;
 }
 
 interface ResourceCardProps {
-	resourceCategory: ResourceCategory;
-	setCurrentResource: Dispatch<SetStateAction<ResourceCategory>>;
-	open: () => void;
+	resource: Resource;
+	setCurrentResource: Dispatch<SetStateAction<Resource>>;
+	openDrawer: () => void;
 }
 
-function ResourceCard({ resourceCategory, setCurrentResource, open }: ResourceCardProps) {
-	const { name, description, iconURL } = resourceCategory;
+// TODO: Refactor.
+// This page will be replaced with a page that fetches data from the backend.
+// Keep in mind that we're using a drawer here because we might have a lot of resources, and just
+// laying it all out on the page would be kind of annoying to navigate.
+// On mobile especially, it would be a pain to scroll through all of the resources, and we won't have enough space
+// for a quick navigation bar on the side. This way, we can just have a drawer that pops up with the resources and each button
+// will be fairly compact, but provide all the necessary information to the user.
+function ResourceCard({ resource, setCurrentResource, openDrawer }: ResourceCardProps) {
+	const { name, description, iconURL } = resource;
 
 	return (
 		<Paper
 			className="h-64 w-full cursor-pointer p-2"
 			onClick={() => {
-				setCurrentResource(resourceCategory);
-				open();
+				setCurrentResource(resource);
+				openDrawer();
 			}}
 		>
 			<p>{name}</p>
@@ -37,8 +46,9 @@ function ResourceCard({ resourceCategory, setCurrentResource, open }: ResourceCa
 	);
 }
 
+// Page
 export default function ResourcesPage() {
-	const [resources, setResources] = useState<ResourceCategory[]>([
+	const [resourceList, setResourceList] = useState<Resource[]>([
 		{
 			name: "Resource 1",
 			description: "This is a sample resource for debugging.",
@@ -70,37 +80,35 @@ export default function ResourcesPage() {
 		},
 	]);
 
-	const [currentResource, setCurrentResource] = useState(resources[0]);
-	const [opened, { open, close }] = useDisclosure(false);
+	const [selectedResource, setSelectedResource] = useState(resourceList[0]);
+	const [isDrawerOpen, { open: openDrawer, close: closeDrawer }] = useDisclosure(false);
 
 	return (
 		<div className="container mx-auto flex flex-col items-center gap-x-4 gap-y-4 md:grid md:grid-cols-2 xl:grid-cols-3">
 			<Drawer
-				title={currentResource.name}
-				opened={opened}
-				onClose={close}
+				title={selectedResource.name}
+				opened={isDrawerOpen}
+				onClose={closeDrawer}
 				position="bottom"
 				classNames={{
 					title: "font-bold text-2xl",
 				}}
 			>
 				<ul>
-					{currentResource.files.map((file, ind) => {
-						return <li key={`filekey_${ind}`}>{file.fileKey}</li>;
-					})}
+					{selectedResource.files.map((file, index) => (
+						<li key={`file_${index}`}>{file.fileKey}</li>
+					))}
 				</ul>
 			</Drawer>
 
-			{resources.map((resource, ind) => {
-				return (
-					<ResourceCard
-						key={`resource_${ind}`}
-						resourceCategory={resource}
-						setCurrentResource={setCurrentResource}
-						open={open}
-					/>
-				);
-			})}
+			{resourceList.map((resource, index) => (
+				<ResourceCard
+					key={`resource_${index}`}
+					resource={resource}
+					setCurrentResource={setSelectedResource}
+					openDrawer={openDrawer}
+				/>
+			))}
 		</div>
 	);
 }
