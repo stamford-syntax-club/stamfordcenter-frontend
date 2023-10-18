@@ -4,6 +4,10 @@ import Image from "next/image";
 
 import { FaCheck } from "react-icons/fa";
 
+import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+
+// TODO: For i18n, just store the locale keys for each point, i.e. "common.find", "common.connect", etc.
 const talkingPoints = [
 	{
 		point: "Find",
@@ -25,6 +29,8 @@ const talkingPoints = [
 ];
 
 export default function Home() {
+	const { t } = useTranslation("common");
+
 	return (
 		<div className="container mx-auto mt-12">
 			<section className="relative w-full">
@@ -38,7 +44,8 @@ export default function Home() {
 					<div className="flex flex-col">
 						<Text className="text-2xl font-semibold text-white md:text-4xl">Welcome to the</Text>
 						<Text className="gradient-span mr-2 w-fit cursor-pointer bg-clip-text text-5xl font-extrabold uppercase text-transparent md:text-6xl">
-							Stamford Center
+							{/* This gets "converted" to "common.title" */}
+							{t("title")}
 						</Text>
 					</div>
 				</h1>
@@ -90,4 +97,13 @@ export default function Home() {
 			</section>
 		</div>
 	);
+}
+
+// TODO: Type this properly lol
+export async function getStaticProps({ locale }: { locale: string }) {
+	return {
+		props: {
+			...(await serverSideTranslations(locale, ["common"])),
+		},
+	};
 }
