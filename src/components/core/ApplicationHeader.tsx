@@ -30,13 +30,7 @@ const navigationItems: NavigationItem[] = [
 				title: "Contact Information",
 				href: "/contact_info",
 			},
-
-			
-			
 		],
-		
-
-
 	},
 	{
 		title: "Study Plans",
