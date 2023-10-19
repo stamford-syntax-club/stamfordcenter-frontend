@@ -48,20 +48,24 @@ const contactCards = [
 ];
 
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCardProps) => (
-	<Card withBorder className="flex h-96 w-80 max-w-sm flex-col justify-between gap-4">
+	<Card withBorder className="flex h-100  w-80 p-12 rounded-lg shadow max-w-sm flex-col gap-4">
 		<CardSection>
 			<div className="flex items-center justify-center">
-				{" "}
-				<Image src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1" height={160} p={25} />
+				<Image src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"  />
 			</div>
 		</CardSection>
 
-		<CardSection className="flex flex-col items-center">{title}</CardSection>
-		<CardSection className="flex items-center">{operationTitle}</CardSection>
-		<CardSection className="flex items-center">{operationTime}</CardSection>
-		<Button variant="light" color="blue" fullWidth mt="md" radius="md">
-			Email
-		</Button>
+		<CardSection className="flex text-white text-lg font-semibold font-['Open Sans']">{title}</CardSection>
+		<CardSection className="flex items-center">{operationTitle}<br/>{operationTime}</CardSection>
+		
+		<Card.Section className="">
+				<div className="w-full">
+					
+						<Button className="w-full text-blue-300 bg-slate-800">Email</Button>
+					
+				</div>
+			</Card.Section>
+		
 	</Card>
 );
 
