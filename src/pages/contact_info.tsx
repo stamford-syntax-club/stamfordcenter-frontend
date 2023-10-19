@@ -8,39 +8,41 @@ interface ContactCardProps {
 	imgUrl: string;
 }
 
+const imageUrl = "/assets/images/contact_info/Rectangle 1.png";
+
 const contactCards = [
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "Academic Support",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 	},
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "Registra",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 	},
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "Library",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 	},
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "Finance",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 	},
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "IT Support",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 	},
 	{
-		imgUrl: "/assets/images/contact_info/Rectangle 1.png",
+		imgUrl: imageUrl,
 		title: "Student Service",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
