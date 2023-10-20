@@ -8,7 +8,7 @@ interface ContactCardProps {
 	imgUrl: string;
 }
 
-const imageUrl = "/assets/images/contact_info/Rectangle 1.png";
+const imageUrl = "/assets/images/logos/registrar.png";
 
 const contactCards = [
 	{
@@ -52,10 +52,11 @@ const contactCards = [
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCardProps) => (
 	<Card withBorder className="flex h-100 w-80 my-10  p-10 rounded-lg shadow max-w-sm flex-col gap-4">
 		<CardSection>
-			<div className="flex items-center justify-center">
-				<Image src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"  />
-			</div>
+			<div className="mx-2 mt-2">
+		<Image className="rounded-sm w-full h-full" src={imgUrl} alt="Registra Img"   />
+		</div>
 		</CardSection>
+		
 
 		<CardSection className="flex text-white text-lg font-semibold font-['Open Sans']">{title}</CardSection>
 		<CardSection className="flex items-center">{operationTitle}<br/>{operationTime}</CardSection>
@@ -63,7 +64,7 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCa
 		<Card.Section className="">
 				<div className="w-full">
 					
-						<Button className="w-full text-blue-300 bg-slate-800">Email</Button>
+						<Button className="w-full h-10 text-blue-300 bg-slate-800">Email</Button>
 					
 				</div>
 			</Card.Section>
