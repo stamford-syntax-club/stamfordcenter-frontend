@@ -64,6 +64,7 @@ Coming soon...
 -   **Ayham H. Tamim** - [@Ayham1590](https://github.com/Ayham1590)
 -   **Chinathai Panditya** - [@chinathaip](https://github.com/chinathaip)
 -   **Nay Htet Kyaw** - [@NayHtetKyaw](https://github.com/NayHtetKyaw)
+-   **Anaphat Choochauy** - [@TommyMFN](https://github.com/TommyMFN)
 
 We welcome all contributions! Please read our [CONTRIBUTING](CONTRIBUTING.md) guide for more information.
 
