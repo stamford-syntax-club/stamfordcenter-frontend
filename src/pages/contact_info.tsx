@@ -50,7 +50,7 @@ const contactCards = [
 ];
 
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCardProps) => (
-	<Card withBorder className="flex h-100  w-80 p-12 rounded-lg shadow max-w-sm flex-col gap-4">
+	<Card withBorder className="flex h-100 w-80 my-10  p-10 rounded-lg shadow max-w-sm flex-col gap-4">
 		<CardSection>
 			<div className="flex items-center justify-center">
 				<Image src="/assets/images/contact_info/Rectangle 1.png" alt="Rectangle 1"  />
@@ -74,23 +74,23 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCa
 // Export
 export default function contactInfoPage() {
 	return (
-		<div className="container mx-auto mt-12">
+		<div className="container justify-center mx-auto mt-12">
 			{/* Header */}
 			<h1>
-				<div className="flex flex-col items-center text-center">
+				<div className="flex flex-col justify-center items-center text-center">
 					<div className="mb-4 text-5xl font-bold">Contact Information</div>
 				</div>
 			</h1>
 
 			{/* Header.Description */}
-			<Text align="center" className="mb-16">
+			<Text align="center">
 				Explore the diverse departments below to find the contact information you need. Our dedicated staff is
 				ready to help you on your educational journey. Feel free to reach out, and we'll ensure you get the
 				support and information required to succeed during your time at Stamford
 			</Text>
-			<Group className="grid lg:grid-cols-3">
+			<Group className="grid lg:grid-cols-3 justify-center items-center gap-x-48 gap-y-0" >
 				{contactCards.map((card) => (
-					<ContactCard key={"contactcard" + card.title} {...card} />
+					<ContactCard key={"contactcard" + card.title} {...card}/>
 				))}
 			</Group>
 		</div>
