@@ -6,6 +6,7 @@ interface ContactCardProps {
 	operationTitle: string;
 	operationTime: string;
 	imgUrl: string;
+	email: string;
 }
 
 const imageUrl = "/assets/images/logos/registrar.png";
@@ -16,41 +17,47 @@ const contactCards = [
 		title: "Academic Support",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "ug_academic@stamford.edu",
 	},
 	{
 		imgUrl: imageUrl,
 		title: "Registra",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "registrar.bkk@stamford.edu",
 	},
 	{
 		imgUrl: imageUrl,
 		title: "Library",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "library@stamford.edu",
 	},
 	{
 		imgUrl: imageUrl,
 		title: "Finance",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "cashier_rm9@stamford.edu",
 	},
 	{
 		imgUrl: imageUrl,
 		title: "IT Support",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "support@stamford.edu",
 	},
 	{
 		imgUrl: imageUrl,
 		title: "Student Service",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
+		email: "international-service@stamford.edu",
 	},
 ];
 
-const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCardProps) => (
-	<Card withBorder className="flex rounded-lg p-10 flex-col gap-4 ">
+const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => (
+	<Card withBorder className="flex rounded-lg p-10 flex-col gap-4 shadow">
 		<CardSection>
 			<div className="mx-2 mt-2">
 		<Image className="rounded-lg w-full h-full" src={imgUrl} alt="Registra Img"   />
@@ -63,9 +70,9 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCa
 		
 		<Card.Section className="">
 				<div className="w-full">
-					
+				<a href={`mailto:${email}`}>
 						<Button className="w-full h-10 text-blue-300 bg-slate-800">Email</Button>
-					
+				</a>
 				</div>
 			</Card.Section>
 		
@@ -79,7 +86,7 @@ export default function contactInfoPage() {
 			{/* Header */}
 			<h1>
 				<div className="flex flex-col justify-center items-center text-center">
-					<div className="mb-4 text-5xl font-bold">Contact Information</div>
+					<div className="mb-4 text-5xl font-bold text-white">Contact Information</div>
 				</div>
 			</h1>
 
