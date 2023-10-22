@@ -50,10 +50,10 @@ const contactCards = [
 ];
 
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl }: ContactCardProps) => (
-	<Card withBorder className="flex h-100 w-80 my-10  p-10 rounded-lg shadow max-w-sm flex-col gap-4">
+	<Card withBorder className="flex rounded-lg p-10 flex-col gap-4 ">
 		<CardSection>
 			<div className="mx-2 mt-2">
-		<Image className="rounded-sm w-full h-full" src={imgUrl} alt="Registra Img"   />
+		<Image className="rounded-lg w-full h-full" src={imgUrl} alt="Registra Img"   />
 		</div>
 		</CardSection>
 		
@@ -89,7 +89,7 @@ export default function contactInfoPage() {
 				ready to help you on your educational journey. Feel free to reach out, and we'll ensure you get the
 				support and information required to succeed during your time at Stamford
 			</Text>
-			<Group className="grid lg:grid-cols-3 justify-center items-center gap-x-48 gap-y-0" >
+			<Group className="grid lg:grid-cols-3 justify-center items-center gap-14 m-14" >
 				{contactCards.map((card) => (
 					<ContactCard key={"contactcard" + card.title} {...card}/>
 				))}
