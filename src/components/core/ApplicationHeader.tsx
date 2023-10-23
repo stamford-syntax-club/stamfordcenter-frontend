@@ -1,9 +1,10 @@
-import { AppShell, Burger, Button, Code, Menu, TextInput, UnstyledButton } from "@mantine/core";
+import { AppShell, Burger, Button, Code, Menu, NavLink, TextInput, UnstyledButton } from "@mantine/core";
 import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { FaChevronDown, FaSearch } from "react-icons/fa";
+import RecursiveNavLink from "./RecursiveNavLink";
 
 interface ApplicationHeaderProps {
 	opened: boolean;
@@ -66,24 +67,33 @@ function NormalNavLink({ title, href }: NavigationItem) {
 
 function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
 	return (
-		<Menu shadow="md" key={"navitem" + title} width={200}>
-			<Menu.Target>
-				<UnstyledButton className="flex flex-row items-center">
-					{title}&nbsp;
-					<FaChevronDown size={7} />
-				</UnstyledButton>
-			</Menu.Target>
-
-			<Menu.Dropdown>
-				<Menu.Item className="p-0">
-					{subitems?.map(({ title, href }) => (
-						<NormalNavLink key={"subitem" + title} title={title} href={href} />
-					))}
-				</Menu.Item>
-			</Menu.Dropdown>
-		</Menu>
+		<NavLink label={title}>
+			{Array.isArray(subitems) &&
+				subitems.map((subItem) => <RecursiveNavLink key={subItem.title} item={subItem} />)}
+		</NavLink>
 	);
 }
+
+// function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
+// 	return (
+// 		<Menu shadow="md" key={"navitem" + title} width={200}>
+// 			<Menu.Target>
+// 				<UnstyledButton className="flex flex-row items-center">
+// 					{title}&nbsp;
+// 					<FaChevronDown size={7} />
+// 				</UnstyledButton>
+// 			</Menu.Target>
+
+// 			<Menu.Dropdown>
+// 				<Menu.Item className="p-0">
+// 					{subitems?.map(({ title, href }) => (
+// 						<NormalNavLink key={"subitem" + title} title={title} href={href} />
+// 					))}
+// 				</Menu.Item>
+// 			</Menu.Dropdown>
+// 		</Menu>
+// 	);
+// }
 
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
 	const searchbarRef = useRef<HTMLInputElement>(null);
@@ -132,14 +142,14 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 						</div>
 
 						{/* Navigation */}
-						<div className="xl:ml-20class ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
+						<div className="ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
 							{navigationItems.map(({ title, href, subitems: children }) => (
 								<div
 									key={"navitem" + title}
-									className="relative flex h-full cursor-pointer items-center"
+									className="relative flex h-full cursor-pointer items-center flex-col"
 								>
 									{children ? (
-										<div className="flex flex-row items-center">
+										<div className="flex flex-col items-center">
 											<NavLinkWithDropdown title={title} href={href} subitems={children} />
 										</div>
 									) : (
