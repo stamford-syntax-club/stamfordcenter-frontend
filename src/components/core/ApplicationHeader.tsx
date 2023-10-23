@@ -10,7 +10,7 @@ interface ApplicationHeaderProps {
 	toggle: () => void;
 }
 
-interface NavigationItem {
+export interface NavigationItem {
 	title: string;
 	href: string;
 	subitems?: NavigationItem[];
@@ -26,8 +26,22 @@ export const navigationItems: NavigationItem[] = [
 		href: "/undergraduate",
 		subitems: [
 			{
-				title: "idk",
+				title: "idk1",
 				href: "/xd",
+			},
+			{
+				title: "idk2",
+				href: "/xd",
+				subitems: [
+					{
+						title: "idk3",
+						href: "/xd",
+					},
+					{
+						title: "idk4",
+						href: "/xd",
+					},
+				],
 			},
 		],
 	},
@@ -155,7 +169,7 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 
 						{/* Report Problem */}
 						{/* TODO: Move this into the mobile navbar on breakpoints that have it */}
-						<div className="lg:ml-2">
+						<div className="hidden lg:inline lg:ml-2">
 							<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
 								<Button variant="subtle">Report Problem</Button>
 							</Link>
