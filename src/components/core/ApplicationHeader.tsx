@@ -56,141 +56,127 @@ export const navigationItems: NavigationItem[] = [
 	},
 ];
 
-function NormalNavLink({ title, href }: NavigationItem) {
-	return href ? <NavLink label={title} href={href} className="no-underline" /> : <NavLink label={title} />;
-}
-
-function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
-	return (
-		<Menu shadow="md" width={200}>
-			<Menu.Target>
-				<UnstyledButton className="my-2.5 text-sm">
-					{title}
-					<FaChevronDown className="mx-1" size={10} />
-				</UnstyledButton>
-			</Menu.Target>
-
-			<>
-				{subitems ? (
-					<Menu.Dropdown>
-						{subitems.map(({ title, href, subitems: children }) => (
-							<>
-								{children ? (
-									<NavLink key={title} href={href} label={title}>
-										{children.map((subItem) => (
-											<RecursiveNavLink key={subItem.title} item={subItem} />
-										))}
-									</NavLink>
-								) : (
-									<NavLink label={title} href={href} />
-								)}
-							</>
-						))}
-					</Menu.Dropdown>
-				) : (
-					<Menu.Dropdown>
-						<Menu.Item>
-							<NavLink label={title} href={href}></NavLink>
-						</Menu.Item>
-					</Menu.Dropdown>
-				)}
-			</>
-		</Menu>
-	);
-}
-
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
 	const searchbarRef = useRef<HTMLInputElement>(null);
-	useHotkeys([
-		[
-			"ctrl+K",
-			() => {
-				if (searchbarRef.current) {
-					searchbarRef.current.focus();
-				}
-			},
-		],
-	]);
+
+	useHotkeys([["ctrl+K", () => searchbarRef.current?.focus()]]);
 
 	return (
 		<AppShell.Header p="sm">
-			{/* Main div */}
 			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
-				{/* Holder div */}
 				<div className="container relative mx-auto h-full">
-					{/* Inner div */}
 					<div className="flex h-full flex-row items-center">
 						<Burger opened={opened} onClick={toggle} hiddenFrom="md" size="lg" />
 
-						{/* Stamford Logo */}
-						<div className="relative aspect-[3.664] h-full">
-							<Link href="/">
-								<Image
-									src="/assets/images/logos/stamford-logo-clearbg-white.png"
-									alt="Stamford Internation University logo"
-									fill
-								/>
-							</Link>
-						</div>
+						<Logo
+							link="/"
+							src="/assets/images/logos/stamford-logo-clearbg-white.png"
+							alt="Stamford Internation University logo"
+						/>
+						<Logo
+							link="https://discord.gg/vBRVJ87cjk"
+							src="/assets/images/logos/codelogo.png"
+							alt="Stamford Internation University logo"
+							isRounded
+						/>
 
-						{/* SyntaX logo */}
-						<div className="relative mx-2 aspect-square h-full">
-							<a href="https://discord.gg/vBRVJ87cjk" target="_">
-								<Image
-									className="rounded-full"
-									src="/assets/images/logos/codelogo.png"
-									alt="Stamford Internation University logo"
-									fill
-								/>
-							</a>
-						</div>
+						<Navigation items={navigationItems} />
 
-						{/* Navigation */}
-						<div className="ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
-							{navigationItems.map(({ title, href, subitems: children }) => (
-								<div
-									key={"navitem" + title}
-									className="relative flex h-full cursor-pointer flex-col items-center"
-								>
-									{children ? (
-										<div className="flex flex-col items-center">
-											<NavLinkWithDropdown title={title} href={href} subitems={children} />
-										</div>
-									) : (
-										<NormalNavLink title={title} href={href} />
-									)}
-								</div>
-							))}
+						<SearchBar searchbarRef={searchbarRef} />
 
-							{/* Searchbar */}
-							{/* TODO: Maybe move to the far right, and collapse on non-xl screen sizes. */}
-							{/* FIXME: Will have some squishing problems, fix later */}
-							<div className="pl-4">
-								<TextInput
-									ref={searchbarRef}
-									placeholder="Search"
-									variant="filled"
-									leftSection={<FaSearch />}
-									rightSectionWidth={70}
-									rightSection={<Code className="hidden xl:inline">Ctrl + K</Code>}
-									onKeyDown={getHotkeyHandler([
-										["Enter", () => searchbarRef.current?.blur()],
-										["Escape", () => searchbarRef.current?.blur()],
-									])}
-								/>
-							</div>
-						</div>
-
-						{/* Report Problem */}
-						{/* TODO: Move this into the mobile navbar on breakpoints that have it */}
-						<div className="hidden lg:ml-2 lg:inline">
-							<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
-								<Button variant="subtle">Report Problem</Button>
-							</Link>
-						</div>
+						<ReportButton link="https://forms.office.com/r/z48ExG8dPs" />
 					</div>
 				</div>
 			</div>
 		</AppShell.Header>
+	);
+}
+
+interface LogoProps {
+	link: string;
+	src: string;
+	alt: string;
+	isRounded?: boolean;
+}
+
+function Logo({ link, src, alt, isRounded = false }: LogoProps) {
+	return (
+		<div className={`relative ${isRounded ? "aspect-square" : "aspect-[3.664]"} h-full`}>
+			<Link href={link}>
+				<Image className={isRounded ? "rounded-full" : ""} src={src} alt={alt} fill />
+			</Link>
+		</div>
+	);
+}
+
+function Navigation({ items }: { items: NavigationItem[] }) {
+	return (
+		<div className="ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
+			{items.map((item) => (
+				<div key={"navitem" + item.title} className="relative flex h-full cursor-pointer flex-col items-center">
+					{item.subitems ? <NavLinkWithDropdown {...item} /> : <NormalNavLink {...item} />}
+				</div>
+			))}
+		</div>
+	);
+}
+
+function NormalNavLink({ title, href }: NavigationItem) {
+	return <NavLink label={title} href={href} className="no-underline" />;
+}
+
+function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
+	const dropdownContent = subitems?.map(({ title, href, subitems: children }) =>
+		children ? (
+			<NavLink key={title} href={href} label={title}>
+				{children.map((subItem) => (
+					<RecursiveNavLink key={subItem.title} item={subItem} />
+				))}
+			</NavLink>
+		) : (
+			<NavLink key={title} label={title} href={href} />
+		),
+	) || <NavLink label={title} href={href} />;
+
+	return (
+		<Menu shadow="md" width={200}>
+			<Menu.Target>
+				{/* TODO: text-sm shouldn't be needed */}
+				<UnstyledButton ta="center" className="h-full text-sm">
+					{title}
+					<FaChevronDown className="mx-1" size={10} />
+				</UnstyledButton>
+			</Menu.Target>
+			<Menu.Dropdown>{dropdownContent}</Menu.Dropdown>
+		</Menu>
+	);
+}
+
+function SearchBar({ searchbarRef }: { searchbarRef: React.RefObject<HTMLInputElement> }) {
+	return (
+		<div className="pl-4">
+			<TextInput
+				ref={searchbarRef}
+				placeholder="Search"
+				variant="filled"
+				leftSection={<FaSearch />}
+				rightSectionWidth={70}
+				rightSection={<Code className="hidden xl:inline">Ctrl + K</Code>}
+				onKeyDown={getHotkeyHandler([
+					["Enter", () => searchbarRef.current?.blur()],
+					["Escape", () => searchbarRef.current?.blur()],
+				])}
+			/>
+		</div>
+	);
+}
+
+function ReportButton({ link }: { link: string }) {
+	return (
+		<div className="hidden lg:ml-2 lg:inline">
+			<Link href={link} target="_blank">
+				<Button variant="subtle">Report Problem</Button>
+			</Link>
+		</div>
 	);
 }
