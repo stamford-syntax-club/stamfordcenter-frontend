@@ -17,7 +17,7 @@ export default function RecursiveNavLink({ item }: RecursiveNavLinkProps) {
 	}
 
 	return item.href ? (
-		<NavLink label={item.title} href={item.href} className="no-underline"/>
+		<NavLink component={Link} label={item.title} href={item.href} className="no-underline" />
 	) : (
 		<NavLink label={item.title} />
 	);

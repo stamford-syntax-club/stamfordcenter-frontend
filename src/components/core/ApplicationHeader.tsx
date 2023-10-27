@@ -1,9 +1,7 @@
-import { AppShell, Burger, Button, Code, Menu, NavLink, TextInput, UnstyledButton } from "@mantine/core";
-import { getHotkeyHandler, useHotkeys } from "@mantine/hooks";
+import { AppShell, Burger, Button, Menu, NavLink, UnstyledButton } from "@mantine/core";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { FaChevronDown, FaSearch } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import RecursiveNavLink from "./RecursiveNavLink";
 
 interface ApplicationHeaderProps {
@@ -57,10 +55,6 @@ export const navigationItems: NavigationItem[] = [
 ];
 
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
-	const searchbarRef = useRef<HTMLInputElement>(null);
-
-	useHotkeys([["ctrl+K", () => searchbarRef.current?.focus()]]);
-
 	return (
 		<AppShell.Header p="sm">
 			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
@@ -81,8 +75,6 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 						/>
 
 						<Navigation items={navigationItems} />
-
-						<SearchBar searchbarRef={searchbarRef} />
 
 						<ReportButton link="https://forms.office.com/r/z48ExG8dPs" />
 					</div>
@@ -122,52 +114,33 @@ function Navigation({ items }: { items: NavigationItem[] }) {
 }
 
 function NormalNavLink({ title, href }: NavigationItem) {
-	return <NavLink label={title} href={href} className="no-underline" />;
+	return <NavLink component={Link} label={title} href={href} className="rounded-sm no-underline" />;
 }
 
-function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
-	const dropdownContent = subitems?.map(({ title, href, subitems: children }) =>
-		children ? (
-			<NavLink key={title} href={href} label={title}>
-				{children.map((subItem) => (
+function NavLinkWithDropdown({ title: mainTitle, href: mainHref, subitems: mainSubitems }: NavigationItem) {
+	const dropdownItems = mainSubitems?.map(({ title: itemTitle, href: itemHref, subitems: itemSubitems }) =>
+		itemSubitems ? (
+			<NavLink component={Link} key={itemTitle} href={itemHref} label={itemTitle}>
+				{itemSubitems.map((subItem) => (
 					<RecursiveNavLink key={subItem.title} item={subItem} />
 				))}
 			</NavLink>
 		) : (
-			<NavLink key={title} label={title} href={href} />
+			<NavLink component={Link} key={itemTitle} label={itemTitle} href={itemHref} />
 		),
-	) || <NavLink label={title} href={href} />;
+	) || <NavLink component={Link} label={mainTitle} href={mainHref} />;
 
 	return (
 		<Menu shadow="md" width={200}>
 			<Menu.Target>
 				{/* TODO: text-sm shouldn't be needed */}
 				<UnstyledButton ta="center" className="h-full text-sm">
-					{title}
+					{mainTitle}
 					<FaChevronDown className="mx-1" size={10} />
 				</UnstyledButton>
 			</Menu.Target>
-			<Menu.Dropdown>{dropdownContent}</Menu.Dropdown>
+			<Menu.Dropdown>{dropdownItems}</Menu.Dropdown>
 		</Menu>
-	);
-}
-
-function SearchBar({ searchbarRef }: { searchbarRef: React.RefObject<HTMLInputElement> }) {
-	return (
-		<div className="pl-4">
-			<TextInput
-				ref={searchbarRef}
-				placeholder="Search"
-				variant="filled"
-				leftSection={<FaSearch />}
-				rightSectionWidth={70}
-				rightSection={<Code className="hidden xl:inline">Ctrl + K</Code>}
-				onKeyDown={getHotkeyHandler([
-					["Enter", () => searchbarRef.current?.blur()],
-					["Escape", () => searchbarRef.current?.blur()],
-				])}
-			/>
-		</div>
 	);
 }
 
