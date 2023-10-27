@@ -56,44 +56,48 @@ export const navigationItems: NavigationItem[] = [
 	},
 ];
 
-
 function NormalNavLink({ title, href }: NavigationItem) {
-	return (
-		<Link href={href}>
-			<UnstyledButton className="h-full w-full p-2">{title}</UnstyledButton>
-		</Link>
-	);
+	return href ? <NavLink label={title} href={href} className="no-underline" /> : <NavLink label={title} />;
 }
 
 function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
 	return (
-		<NavLink label={title}>
-			{Array.isArray(subitems) &&
-				subitems.map((subItem) => <RecursiveNavLink key={subItem.title} item={subItem} />)}
-		</NavLink>
+		<Menu shadow="md" width={200}>
+			<Menu.Target>
+				<UnstyledButton className="my-2.5 text-sm">
+					{title}
+					<FaChevronDown className="mx-1" size={10} />
+				</UnstyledButton>
+			</Menu.Target>
+
+			<>
+				{subitems ? (
+					<Menu.Dropdown>
+						{subitems.map(({ title, href, subitems: children }) => (
+							<>
+								{children ? (
+									<NavLink key={title} href={href} label={title}>
+										{children.map((subItem) => (
+											<RecursiveNavLink key={subItem.title} item={subItem} />
+										))}
+									</NavLink>
+								) : (
+									<NavLink label={title} href={href} />
+								)}
+							</>
+						))}
+					</Menu.Dropdown>
+				) : (
+					<Menu.Dropdown>
+						<Menu.Item>
+							<NavLink label={title} href={href}></NavLink>
+						</Menu.Item>
+					</Menu.Dropdown>
+				)}
+			</>
+		</Menu>
 	);
 }
-
-// function NavLinkWithDropdown({ title, href, subitems }: NavigationItem) {
-// 	return (
-// 		<Menu shadow="md" key={"navitem" + title} width={200}>
-// 			<Menu.Target>
-// 				<UnstyledButton className="flex flex-row items-center">
-// 					{title}&nbsp;
-// 					<FaChevronDown size={7} />
-// 				</UnstyledButton>
-// 			</Menu.Target>
-
-// 			<Menu.Dropdown>
-// 				<Menu.Item className="p-0">
-// 					{subitems?.map(({ title, href }) => (
-// 						<NormalNavLink key={"subitem" + title} title={title} href={href} />
-// 					))}
-// 				</Menu.Item>
-// 			</Menu.Dropdown>
-// 		</Menu>
-// 	);
-// }
 
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
 	const searchbarRef = useRef<HTMLInputElement>(null);
@@ -146,7 +150,7 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 							{navigationItems.map(({ title, href, subitems: children }) => (
 								<div
 									key={"navitem" + title}
-									className="relative flex h-full cursor-pointer items-center flex-col"
+									className="relative flex h-full cursor-pointer flex-col items-center"
 								>
 									{children ? (
 										<div className="flex flex-col items-center">
@@ -179,7 +183,7 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 
 						{/* Report Problem */}
 						{/* TODO: Move this into the mobile navbar on breakpoints that have it */}
-						<div className="hidden lg:inline lg:ml-2">
+						<div className="hidden lg:ml-2 lg:inline">
 							<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
 								<Button variant="subtle">Report Problem</Button>
 							</Link>
