@@ -5,14 +5,11 @@ import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElem
 import { useState } from "react";
 import { FaDownload, FaEye, FaSearch } from "react-icons/fa";
 import { StudyPlanTableRowsTemplate } from "./StudyPlanTableRowsTemplate";
+import { API_BASE_LINK } from "@utils/constants/API_BASE_LINK";
 
 interface StudyPlanTableProps {
 	elements: StudyPlanElement[];
 }
-
-// TODO: Make the env files .env.local and .env.production.local or w/e
-const API_BASE_LINK =
-	process.env.NODE_ENV === "production" ? "https://center-be.stamford.dev" : "https://center-be-beta.stamford.dev";
 
 // XD
 async function downloadFile(element: StudyPlanElement) {
