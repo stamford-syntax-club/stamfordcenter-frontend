@@ -5,12 +5,14 @@ import { useDebouncedValue, useDisclosure } from "@mantine/hooks";
 import { Resource } from "@ourtypes/resources_page_types/ResourceTypes";
 import { useEffect, useState } from "react";
 
+import { API_BASE_LINK } from "@utils/constants/API_BASE_LINK";
+
 export default function ResourcesPage() {
 	const [resourceList, setResourceList] = useState<Resource[]>([]);
 	const [searchQuery, setSearchQuery] = useState("");
 
 	useEffect(() => {
-		fetch("https://center-be.stamford.dev/api/resources/resources").then((res) => {
+		fetch(`${API_BASE_LINK}/api/resources/resources`).then((res) => {
 			res.json().then((data) => {
 				setResourceList(data);
 			});
