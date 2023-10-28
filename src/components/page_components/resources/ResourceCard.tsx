@@ -24,6 +24,7 @@ export default function ResourceCard({ resource, setCurrentResource, openDrawer 
 		>
 			<div className="flex h-full w-full flex-col items-center justify-center">
 				<div className="relative aspect-square h-16 w-16">
+					{/* TODO: add sizes prop */}
 					<Image src={iconURL} alt={`${name} icon`} fill />
 				</div>
 				<Text className="text-4xl" ta="center">
