@@ -25,8 +25,12 @@ export const navigationItems: NavigationItem[] = [
 		href: "/undergraduate",
 		subitems: [
 			{
-				title: "idk1",
-				href: "/xd",
+				title: "Resources",
+				href: "/resources",
+			},
+			{
+				title: "Study Plans",
+				href: "/study_plans",
 			},
 			{
 				title: "idk2",
@@ -43,10 +47,6 @@ export const navigationItems: NavigationItem[] = [
 				],
 			},
 		],
-	},
-	{
-		title: "Study Plans",
-		href: "/study_plans",
 	},
 	{
 		title: "More",
