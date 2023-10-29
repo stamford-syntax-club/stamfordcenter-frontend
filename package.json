@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev --turbo",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint"
@@ -20,12 +20,12 @@
 		"@mantine/notifications": "^7.1.7",
 		"@mantine/nprogress": "^7.1.7",
 		"@mantine/spotlight": "^7.1.7",
-		"@types/node": "20.8.2",
+		"@types/node": "20.8.9",
 		"@types/react": "^18.2.33",
 		"@types/react-dom": "^18.2.14",
 		"autoprefixer": "10.4.16",
 		"dayjs": "^1.11.10",
-		"eslint": "8.50.0",
+		"eslint": "8.52.0",
 		"eslint-config-next": "^14.0.0",
 		"next": "^14.0.0",
 		"react": "^18.2.0",
@@ -33,14 +33,14 @@
 		"react-icons": "^4.11.0",
 		"sharp": "^0.32.6",
 		"swr": "^2.2.4",
-		"tailwindcss": "3.3.3",
+		"tailwindcss": "3.3.5",
 		"typescript": "5.2.2"
 	},
 	"devDependencies": {
 		"postcss": "^8.4.31",
-		"postcss-preset-mantine": "^1.8.0",
+		"postcss-preset-mantine": "^1.9.0",
 		"postcss-simple-vars": "^7.0.1",
 		"prettier": "^3.0.3",
-		"prettier-plugin-tailwindcss": "^0.5.5"
+		"prettier-plugin-tailwindcss": "^0.5.6"
 	}
 }
