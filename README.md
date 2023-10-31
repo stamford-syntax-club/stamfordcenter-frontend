@@ -18,13 +18,11 @@ Our goal is to provide a centralized platform where students can stay connected 
 - [React](https://reactjs.org/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Mantine](https://mantine.dev/)
-- [Emotion](https://emotion.sh/docs/introduction)
-- [Day.js](https://day.js.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
 ## 💻 Local Development
 ### Prerequisites
-- Node.js >=14.0.0
+- Node.js >= 18.17
 - npm
 
 ### Steps
