@@ -31,6 +31,8 @@ jobs:
                   context: .
                   tags: |
                       ghcr.io/stamford-syntax-club/stamfordcenter-frontend:${{ env.GITHUB_SHA }}
+                  build-args: |
+                      "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}"
                   push: true
 
             - name: Image digest
@@ -50,7 +52,6 @@ jobs:
             - name: create and checkout new branch
               run: |
                   git checkout -b deploy/frontend-${GITHUB_SHA}
-
             - name: change image tag
               run: |
                   git config user.name "syntax-bot"
