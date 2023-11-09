@@ -6,6 +6,7 @@
 	0% {
 		background-position: 0% center;
 	}
+
 	100% {
 		background-position: -200% center;
 	}
@@ -23,4 +24,27 @@ a {
 
 body {
 	background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-8));
+}
+
+@keyframes bounce {
+
+	0%,
+	20%,
+	50%,
+	80%,
+	100% {
+		transform: translateY(0);
+	}
+
+	40% {
+		transform: translateY(-7px);
+	}
+
+	60% {
+		transform: translateY(-7px);
+	}
+}
+
+.bouncy {
+	animation: bounce 1s infinite;
 }
