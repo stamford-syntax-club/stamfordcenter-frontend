@@ -60,6 +60,16 @@ const cards = [
     },
 ];
 
+
+const carouselSlides = [
+    { src: "/assets/images/student_council/1.jpg", alt: "Slide 1" },
+    { src: "/assets/images/student_council/2.jpg", alt: "Slide 2" },
+    { src: "/assets/images/student_council/3.jpg", alt: "Slide 3" },
+    { src: "/assets/images/student_council/4.jpg", alt: "Slide 4" },
+    { src: "/assets/images/student_council/5.jpg", alt: "Slide 5" },
+];
+
+
 export default function StudentCouncilPage() {
     const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
         offset: 60,
@@ -73,23 +83,21 @@ export default function StudentCouncilPage() {
             <div className="flex flex-row">
                 {cards.map((card) => (
                     <div
-                        className="w-[250px] h-[480px] rounded-lg transition-all duration-100 transform cursor-default hover:-translate-y-2"
+                        className="w-[250px] h-[480px] rounded-lg transition-all duration-100 transform cursor-default hover:-translate-y-2 relative group"
                         style={card.style}
                         key={"profile_card" + card.id}
                     >
-                        <Paper className="w-full h-full bg-black">
-                            <div className="relative w-full h-full">
-                                <img
-                                    className="w-full h-full object-cover rounded-lg"
-                                    src={card.imgURL}
-                                    alt={card.title}
-                                />
-                            </div>
-                            <div className="opacity-0 hover:opacity-100 transition-opacity duration-200 fixed text-center left-0 right-0 bottom-0 text-white p-4">
+                        <div className="w-full h-full bg-black">
+                            <img
+                                className="w-full h-full object-cover rounded-lg"
+                                src={card.imgURL}
+                                alt={card.title}
+                            />
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 fixed text-center left-0 right-0 bottom-0 text-white p-4">
                                 <h3 className="md:text-xl text-xs font-bold">{card.title}</h3>
                                 <p className="md:text-base text-xs font-bold">{card.description}</p>
                             </div>
-                        </Paper>
+                        </div>
                     </div>
                 ))}
             </div>
@@ -107,8 +115,8 @@ export default function StudentCouncilPage() {
             </div>
 
             <div className="container mx-auto pt-80" ref={targetRef}>
-                <div className="flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between w-[100%]">
-                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-[100%] rounded-lg">
+                <div className="flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between w-full">
+                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-full rounded-lg">
                         <div className="relative">
                             <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">About</h1>
                             <p className="md:pl-6 pl-3 md:w-[350px] w-[250px] text-base">
@@ -121,7 +129,7 @@ export default function StudentCouncilPage() {
                             </div>
                         </div>
                     </Paper>
-                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-[100%] rounded-lg">
+                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-full rounded-lg">
                         <div className="relative">
                             <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">Upcoming Event</h1>
                             <p className="md:pl-6 pl-3 md:w-[350px] w-[250px] text-base">
@@ -139,21 +147,11 @@ export default function StudentCouncilPage() {
                 <div className="pt-20">
                     <Carousel withIndicators
                         slideSize="25%" height={200} slideGap="md" align="start" >
-                        <Carousel.Slide>
-                            <Image src="/assets/images/student_council/1.jpg" alt="Slide 1" className="w-full h-full object-cover" />
-                        </Carousel.Slide>
-                        <Carousel.Slide>
-                            <Image src="/assets/images/student_council/2.jpg" alt="Slide 2" className="w-full h-full object-cover" />
-                        </Carousel.Slide>
-                        <Carousel.Slide>
-                            <Image src="/assets/images/student_council/3.jpg" alt="Slide 3" className="w-full h-full object-cover" />
-                        </Carousel.Slide>
-                        <Carousel.Slide>
-                            <Image src="/assets/images/student_council/4.jpg" alt="Slide 4" className="w-full h-full object-cover" />
-                        </Carousel.Slide>
-                        <Carousel.Slide>
-                            <Image src="/assets/images/student_council/5.jpg" alt="Slide 4" className="w-full h-full object-cover" />
-                        </Carousel.Slide>
+                        {carouselSlides.map((slide, index) => (
+                            <Carousel.Slide key={index}>
+                                <Image src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
+                            </Carousel.Slide>
+                        ))}
                     </Carousel>
                 </div>
 
