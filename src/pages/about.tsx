@@ -35,12 +35,6 @@ const carouselImages = [
 export default function AboutUsPage() {
 	const autoplay = useRef(AutoPlay({ delay: 2000 }));
 
-	const slides = carouselImages.map((image, index) => (
-		<Carousel.Slide key={`carouselImages-${index}`}>
-			<Image height={300} width={300} src={image.src} alt={image.alt} />
-		</Carousel.Slide>
-	));
-
 	return (
 		<div className="container mx-auto mt-8 text-center">
 			<Stack className="mb-6">
@@ -53,7 +47,7 @@ export default function AboutUsPage() {
 				</Text>
 				<Text className="text-lg font-semibold">Our Past Activities</Text>
 
-				<Accordion>
+				<Accordion multiple transitionDuration={1000}>
 					{achievements.map((achievement, index) => (
 						<Accordion.Item key={`achievement-${index}`} value={`achievemment-${index}`}>
 							<Accordion.Control>
@@ -68,13 +62,16 @@ export default function AboutUsPage() {
 
 				<Center>
 					<Carousel
-						mx="auto"
 						loop
 						plugins={[autoplay.current]}
 						onMouseEnter={autoplay.current.stop}
 						onMouseLeave={autoplay.current.reset}
 					>
-						{slides}
+						{carouselImages.map((image, index) => (
+							<Carousel.Slide key={`carouselImages-${index}`}>
+								<Image height={300} width={300} src={image.src} alt={image.alt} />
+							</Carousel.Slide>
+						))}
 					</Carousel>
 				</Center>
 			</Stack>
