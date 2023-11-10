@@ -1,8 +1,8 @@
-import { Button, Card, Group, Paper, ThemeIcon, UnstyledButton } from "@mantine/core";
+import { Image, Paper, ThemeIcon, UnstyledButton } from "@mantine/core";
+import { useScrollIntoView } from '@mantine/hooks';
 import { Carousel } from '@mantine/carousel';
 import React from "react";
 import { FaArrowDown, FaInstagram, FaTiktok } from "react-icons/fa";
-import { start } from "repl";
 
 
 
@@ -61,12 +61,9 @@ const cards = [
 ];
 
 export default function StudentCouncilPage() {
-    const scrollToSecondContainer = () => {
-        const secondContainer = document.getElementById("second-container");
-        if (secondContainer) {
-            secondContainer.scrollIntoView({ behavior: "smooth" });
-        }
-    };
+    const { scrollIntoView, targetRef } = useScrollIntoView<HTMLDivElement>({
+        offset: 60,
+    });
 
     return (
         <div className="container mx-auto">
@@ -98,14 +95,18 @@ export default function StudentCouncilPage() {
             </div>
 
             <div className="flex items-center justify-center">
-                <UnstyledButton onClick={scrollToSecondContainer}>
+                <UnstyledButton onClick={() =>
+                    scrollIntoView({
+                        alignment: 'center',
+                    })
+                }>
                     <ThemeIcon radius="xl" className="bouncy">
                         <FaArrowDown />
                     </ThemeIcon>
                 </UnstyledButton>
             </div>
 
-            <div className="container mx-auto pt-80" id="second-container">
+            <div className="container mx-auto pt-80" ref={targetRef}>
                 <div className="flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between w-[100%]">
                     <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-[100%] rounded-lg">
                         <div className="relative">
@@ -116,7 +117,7 @@ export default function StudentCouncilPage() {
                                 communicating with the university&apos;s administration.
                             </p>
                             <div className="absolute top-0 md:ml-[380px] ml-[280px] md:mt-7 mt-4">
-                                <img className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/group.jpg" alt="" />
+                                <Image className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/group.jpg" alt="" />
                             </div>
                         </div>
                     </Paper>
@@ -124,12 +125,13 @@ export default function StudentCouncilPage() {
                         <div className="relative">
                             <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">Upcoming Event</h1>
                             <p className="md:pl-6 pl-3 md:w-[350px] w-[250px] text-base">
-                                The Student Council is the official student body of Stamford International University. The
-                                council is responsible for representing the student body, organizing events, and
-                                communicating with the university&apos;s administration.
+                                The "Welcome Freshmen" event, orchestrated by the Student Council at Stamford International University,
+                                symbolizes the warm embrace awaiting new students. This event serves as an introduction to the vibrant community,
+                                showcasing the Council's dedication to fostering a welcoming environment and facilitating a
+                                smooth transition into university life..
                             </p>
                             <div className="absolute top-0 md:ml-[380px] ml-[280px] md:mt-7 mt-4">
-                                <img className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/example.png" alt="" />
+                                <Image className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/example.png" alt="" />
                             </div>
                         </div>
                     </Paper>
@@ -138,19 +140,19 @@ export default function StudentCouncilPage() {
                     <Carousel withIndicators
                         slideSize="25%" height={200} slideGap="md" align="start" >
                         <Carousel.Slide>
-                            <img src="/assets/images/student_council/1.jpg" alt="Slide 1" className="w-full h-full object-cover" />
+                            <Image src="/assets/images/student_council/1.jpg" alt="Slide 1" className="w-full h-full object-cover" />
                         </Carousel.Slide>
                         <Carousel.Slide>
-                            <img src="/assets/images/student_council/2.jpg" alt="Slide 2" className="w-full h-full object-cover" />
+                            <Image src="/assets/images/student_council/2.jpg" alt="Slide 2" className="w-full h-full object-cover" />
                         </Carousel.Slide>
                         <Carousel.Slide>
-                            <img src="/assets/images/student_council/3.jpg" alt="Slide 3" className="w-full h-full object-cover" />
+                            <Image src="/assets/images/student_council/3.jpg" alt="Slide 3" className="w-full h-full object-cover" />
                         </Carousel.Slide>
                         <Carousel.Slide>
-                            <img src="/assets/images/student_council/4.jpg" alt="Slide 4" className="w-full h-full object-cover" />
+                            <Image src="/assets/images/student_council/4.jpg" alt="Slide 4" className="w-full h-full object-cover" />
                         </Carousel.Slide>
                         <Carousel.Slide>
-                            <img src="/assets/images/student_council/5.jpg" alt="Slide 4" className="w-full h-full object-cover" />
+                            <Image src="/assets/images/student_council/5.jpg" alt="Slide 4" className="w-full h-full object-cover" />
                         </Carousel.Slide>
                     </Carousel>
                 </div>
