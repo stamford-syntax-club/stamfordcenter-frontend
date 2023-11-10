@@ -1,4 +1,4 @@
-import { Text, Stack, Image, Card, Group } from "@mantine/core";
+import { Text, Center, Card, Image, Grid, rem } from "@mantine/core";
 import { Carousel } from "@mantine/carousel";
 import { ClubAchievement } from "@ourtypes/about_page_types/ClubAchievement";
 
@@ -9,12 +9,16 @@ const achievements: ClubAchievement[] = [
 			"A practical workshop with more than 40+ attendees that teaches students and lecturers how to use Git and GitHub to manage code and collaborate with others.",
 		images: [
 			{
-				src: "/assets/images/logos/study-plan.png",
+				src: "/assets/images/about/github-workshop1.png",
 				alt: "Git & GitHub for Software Engineer Workshop",
 			},
 			{
-				src: "/assets/images/logos/calender.png",
+				src: "/assets/images/about/github-workshop2.png",
 				alt: "Git & GitHub for Software Engineer Workshop 2",
+			},
+			{
+				src: "/assets/images/logos/study-plan.png",
+				alt: "Club Fair",
 			},
 		],
 	},
@@ -37,25 +41,36 @@ export default function AboutUsPage() {
 				<Text className="mb-4 text-3xl font-bold uppercase text-white">About us</Text>
 				<Text className="mb-4 text-xl font-bold text-white">Stamford Syntax Club</Text>
 				<Text className="mb-4">
-					Stamford Syntax Club is a student-run club at Stamford International University that aims to help
-					students with their programming skills and to provide a platform for students to learn and share
-					their knowledge with others.
+					Stamford Syntax Club is a student-run club at Stamford International University that aims to use
+					technology to improve the lives of students and faculty members. We are a group of students who are
+					passionate about technology and want to make a difference in the Stamford community.
 				</Text>
 				<Text className="mb-4 text-lg font-semibold">Our Past Activities</Text>
 
 				{achievements.map((achievement, index) => (
-					<Card key={`achievement-${index}`} className="mb-8">
-						<Text className="mb-2 text-xl font-bold text-white">{achievement.title}</Text>
-						<Text className="mb-4">{achievement.description}</Text>
-						<Carousel slideSize="100%" height={200} withIndicators>
-							{achievement.images.map((image, imageIndex) => (
-								<Carousel.Slide key={`achievement-${index}-image-${imageIndex}`}>
-									<div className="flex h-full items-center justify-center">
-										<Image src={image.src} alt={image.alt} width={200} height={200} />
-									</div>
-								</Carousel.Slide>
-							))}
-						</Carousel>
+					<Card key={`achievement-${index}`} className="mx-10 mb-8 p-6">
+						<Grid align="center">
+							<Grid.Col span={{ base: 12, md: 4, lg: 4, xl: 4 }}>
+								<Carousel mx="auto" loop>
+									{achievement.images.map((image, imageIndex) => (
+										<Carousel.Slide key={`achievement-${index}-image-${imageIndex}`}>
+											<Center>
+												<Image
+													radius="md"
+													style={{ width: rem(300), height: rem(300) }}
+													src={image.src}
+													alt={image.alt}
+												/>
+											</Center>
+										</Carousel.Slide>
+									))}
+								</Carousel>
+							</Grid.Col>
+							<Grid.Col span={{ base: 12, md: 8, lg: 8, xl: 8 }}>
+								<Text className="mb-2 text-xl font-bold text-white">{achievement.title}</Text>
+								<Text className="mb-4">{achievement.description}</Text>
+							</Grid.Col>
+						</Grid>
 					</Card>
 				))}
 			</div>
