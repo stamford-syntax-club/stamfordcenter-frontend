@@ -1,20 +1,24 @@
 import Link from "next/link";
-import { Text, Center, Accordion, Stack, Divider } from "@mantine/core";
+import { Text, Accordion, Stack, Divider } from "@mantine/core";
 import Image from "next/image";
 import { Carousel } from "@mantine/carousel";
 import AutoPlay from "embla-carousel-autoplay";
-import { ClubAchievement } from "@ourtypes/about_page_types/ClubAchievement";
+import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
 import { useRef } from "react";
 
-const achievements: ClubAchievement[] = [
+const activities: ClubActivities[] = [
 	{
 		title: "Git & GitHub for Software Engineer Workshop",
 		description:
 			"A practical workshop with more than 40+ attendees that teaches students and lecturers how to use Git and GitHub to manage code and collaborate with others.",
 	},
 	{
-		title: "Club Fair",
+		title: "Student Club Fair Term 1-2023",
 		description: "Something club fair",
+	},
+	{
+		title: "Stamford Syntax Club Orientations",
+		description: "Something orientation meetings",
 	},
 ];
 
@@ -38,7 +42,7 @@ export default function AboutUsPage() {
 
 	return (
 		<div className="container mx-auto mt-8 text-center">
-			<Stack className="mb-6">
+			<Stack>
 				<Text className="text-3xl font-bold uppercase text-white">About us</Text>
 				<Text className="text-2xl font-bold text-white">Stamford Center</Text>
 				<Text>
@@ -50,14 +54,14 @@ export default function AboutUsPage() {
 					finding critical information and ensuring a smoother transition into university life.
 				</Text>
 
-				<Text className="text-lg font-bold"> Resources on our website</Text>
+				<Text className="text-lg font-bold text-white"> Resources on our website</Text>
 				<Text>
 					Resources on our website are taken from official university websites and are updated regularly to be
 					as accurate as possible. We also provide a search function to help you find the information you
 					need. If the resource you are looking for is not available on our website, please inform us by
 					submitting{" "}
 					<Link href="https://forms.office.com/r/z48ExG8dPs" target="_blank">
-						<span className="text-yellow-200">a feedback form here</span>
+						<span className="text-blue-400">a feedback form here</span>
 					</Link>
 				</Text>
 
@@ -69,10 +73,10 @@ export default function AboutUsPage() {
 					technology to improve the lives of students and faculty members. We are a group of students who are
 					passionate about technology and want to make a difference in the Stamford community.
 				</Text>
-				<Text className="text-lg font-bold">Our Past Activities</Text>
+				<Text className="text-lg font-bold text-white">Our Past Activities</Text>
 
 				<Accordion multiple variant="filled">
-					{achievements.map((achievement, index) => (
+					{activities.map((achievement, index) => (
 						<Accordion.Item key={`achievement-${index}`} value={`achievemment-${index}`}>
 							<Accordion.Control>
 								<Text className="mb-2 text-lg">{achievement.title}</Text>
@@ -84,20 +88,18 @@ export default function AboutUsPage() {
 					))}
 				</Accordion>
 
-				<Center>
-					<Carousel
-						loop
-						plugins={[autoplay.current]}
-						onMouseEnter={autoplay.current.stop}
-						onMouseLeave={autoplay.current.reset}
-					>
-						{carouselImages.map((image, index) => (
-							<Carousel.Slide key={`carouselImages-${index}`}>
-								<Image height={300} width={300} src={image.src} alt={image.alt} />
-							</Carousel.Slide>
-						))}
-					</Carousel>
-				</Center>
+				<Carousel
+					loop
+					plugins={[autoplay.current]}
+					onMouseEnter={autoplay.current.stop}
+					onMouseLeave={autoplay.current.reset}
+				>
+					{carouselImages.map((image, index) => (
+						<Carousel.Slide key={`carouselImages-${index}`}>
+							<Image height={300} width={300} src={image.src} alt={image.alt} />
+						</Carousel.Slide>
+					))}
+				</Carousel>
 			</Stack>
 		</div>
 	);
