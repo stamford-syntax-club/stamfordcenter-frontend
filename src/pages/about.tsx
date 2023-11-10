@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Text, Center, Accordion, Stack } from "@mantine/core";
+import { Text, Center, Accordion, Stack, Divider } from "@mantine/core";
 import Image from "next/image";
 import { Carousel } from "@mantine/carousel";
 import AutoPlay from "embla-carousel-autoplay";
@@ -61,6 +61,8 @@ export default function AboutUsPage() {
 					</Link>
 				</Text>
 
+				<Divider size="md" my="xl" />
+
 				<Text className="text-2xl font-bold text-white">Stamford Syntax Club</Text>
 				<Text>
 					Stamford Syntax Club is a student-run club at Stamford International University that aims to use
@@ -69,7 +71,7 @@ export default function AboutUsPage() {
 				</Text>
 				<Text className="text-lg font-bold">Our Past Activities</Text>
 
-				<Accordion multiple>
+				<Accordion multiple variant="filled">
 					{achievements.map((achievement, index) => (
 						<Accordion.Item key={`achievement-${index}`} value={`achievemment-${index}`}>
 							<Accordion.Control>
