@@ -33,6 +33,10 @@ export const navigationItems: NavigationItem[] = [
 				href: "/study_plans",
 			},
 			{
+				title: "Student Council",
+				href: "/student_council",
+			},
+			{
 				title: "idk2",
 				href: "/xd",
 				subitems: [
