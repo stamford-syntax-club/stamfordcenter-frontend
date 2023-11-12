@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { Text, Accordion, Stack, Divider } from "@mantine/core";
-import Image from "next/image";
-import { Carousel } from "@mantine/carousel";
-import AutoPlay from "embla-carousel-autoplay";
+import { Divider, Stack, Text } from "@mantine/core";
 import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
-import { useRef } from "react";
+import ClubActivitySlideShow from "@components/page_components/about/ClubActivitySlideShow";
+import ClubActivityAccordion from "@components/page_components/about/ClubActivityAccordion";
 
 const activities: ClubActivities[] = [
 	{
@@ -35,11 +33,21 @@ const carouselImages = [
 		src: "/assets/images/logos/study-plan.png",
 		alt: "Club Fair",
 	},
+	{
+		src: "/assets/images/logos/microsoft.png",
+		alt: "Something",
+	},
+	{
+		src: "/assets/images/logos/van.png",
+		alt: "Van",
+	},
+	{
+		src: "/assets/images/logos/registrar.png",
+		alt: "Registrar",
+	},
 ];
 
 export default function AboutUsPage() {
-	const autoplay = useRef(AutoPlay({ delay: 2000 }));
-
 	return (
 		<div className="container mx-auto mt-8 text-center">
 			<Stack>
@@ -54,7 +62,7 @@ export default function AboutUsPage() {
 					finding critical information and ensuring a smoother transition into university life.
 				</Text>
 
-				<Text className="text-lg font-bold text-white"> Resources on our website</Text>
+				<Text className="text-lg font-bold text-white">Resources on our website</Text>
 				<Text>
 					Resources on our website are taken from official university websites and are updated regularly to be
 					as accurate as possible. We also provide a search function to help you find the information you
@@ -75,31 +83,9 @@ export default function AboutUsPage() {
 				</Text>
 				<Text className="text-lg font-bold text-white">Our Past Activities</Text>
 
-				<Accordion multiple variant="filled">
-					{activities.map((achievement, index) => (
-						<Accordion.Item key={`achievement-${index}`} value={`achievemment-${index}`}>
-							<Accordion.Control>
-								<Text className="mb-2 text-lg">{achievement.title}</Text>
-							</Accordion.Control>
-							<Accordion.Panel>
-								<Text className="mb-4">{achievement.description}</Text>
-							</Accordion.Panel>
-						</Accordion.Item>
-					))}
-				</Accordion>
+				<ClubActivityAccordion activities={activities} />
 
-				<Carousel
-					loop
-					plugins={[autoplay.current]}
-					onMouseEnter={autoplay.current.stop}
-					onMouseLeave={autoplay.current.reset}
-				>
-					{carouselImages.map((image, index) => (
-						<Carousel.Slide key={`carouselImages-${index}`}>
-							<Image height={300} width={300} src={image.src} alt={image.alt} />
-						</Carousel.Slide>
-					))}
-				</Carousel>
+				<ClubActivitySlideShow carouselImages={carouselImages} />
 			</Stack>
 		</div>
 	);
