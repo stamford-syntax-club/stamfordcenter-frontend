@@ -47,7 +47,11 @@ const quickLinkCards = [
 		title: "Academic Calendar",
 		description:
 			"The calendar that tell you about important academic day in each term, including holidays, exam days, and many more.",
+<<<<<<< HEAD
 		link: "https://center-be-beta.stamford.dev/api/files/resources/2_2023_academic_calendar.pdf",
+=======
+		link: "https://center-be.stamford.dev/api/files/resources/2_2023_academic_calendar.pdf",
+>>>>>>> f493ba6 (updated the calender)
 		originalLink:
 			"https://learn.stamford.edu/bbcswebdav/library/Library%20Content/Share%20Content/Welcome%20Page%20(UG)/Files/Term2-2023/2-2023_UG_Academic%20Calendar_Student%20Version%20Updated%2021%20August%202023.pdf",
 	},
