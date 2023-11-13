@@ -32,21 +32,11 @@ export const navigationItems: NavigationItem[] = [
 				title: "Study Plans",
 				href: "/study_plans",
 			},
-			{
-				title: "idk2",
-				href: "/xd",
-				subitems: [
-					{
-						title: "idk3",
-						href: "/xd",
-					},
-					{
-						title: "idk4",
-						href: "/xd",
-					},
-				],
-			},
 		],
+	},
+	{
+		title: "About Us",
+		href: "/about",
 	},
 	{
 		title: "More",
