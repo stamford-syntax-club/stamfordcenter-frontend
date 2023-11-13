@@ -12,38 +12,40 @@ const activities: ClubActivities[] = [
 	},
 	{
 		title: "Student Club Fair Term 1-2023",
-		description: "Something club fair",
+		description:
+			"Showcasing our vibrant booth at the Student Club Fair where we enthusiastically promoted our club, engaged visitors in coding-related mini-games, and welcomed new members to join our coding community.",
 	},
 	{
 		title: "Stamford Syntax Club Orientations",
-		description: "Something orientation meetings",
+		description:
+			"Welcoming new members at our club orientations, we introduced them to the club's mission, explained our projects, and provided hands-on assistance in setting up their computers for programming. Discover how you can contribute to our collaborative coding journey!",
 	},
 ];
 
 const carouselImages = [
 	{
 		src: "/assets/images/about/github-workshop1.png",
-		alt: "Git & GitHub for Software Engineer Workshop",
+		alt: "Participants at Git & GitHub for Software Engineer Workshop",
 	},
 	{
 		src: "/assets/images/about/github-workshop2.png",
-		alt: "Git & GitHub for Software Engineer Workshop 2",
+		alt: "Git & GitHub for Software Engineer Workshop Session",
 	},
 	{
-		src: "/assets/images/logos/study-plan.png",
-		alt: "Club Fair",
+		src: "/assets/images/about/syntax-orientation1.png",
+		alt: "1st Stamford Syntax Orientation Meeting",
 	},
 	{
-		src: "/assets/images/logos/microsoft.png",
-		alt: "Something",
+		src: "/assets/images/about/syntax-orientation2.png",
+		alt: "2nd Stamford Syntax Orientation Meeting",
 	},
 	{
-		src: "/assets/images/logos/van.png",
-		alt: "Van",
+		src: "/assets/images/about/clubfair.png",
+		alt: "Stamford Student Club Fair",
 	},
 	{
-		src: "/assets/images/logos/registrar.png",
-		alt: "Registrar",
+		src: "/assets/images/about/clubfair2.png",
+		alt: "Stamford Syntax Club Booth during Club Fair",
 	},
 ];
 
