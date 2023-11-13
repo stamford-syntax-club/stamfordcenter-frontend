@@ -34,7 +34,7 @@ export default function ClubActivitySlideShow({ carouselImages }: ClubActivitySl
 			onMouseLeave={autoplay.current.reset}
 			slideGap="md"
 			slideSize={{ base: "100%", sm: "50%", md: "33%" }}
-            className="mb-8"
+            className="mb-4"
 		>
 			{carouselImages.map((image, index) => (
 				<Carousel.Slide key={`carouselImages-${index}`}>

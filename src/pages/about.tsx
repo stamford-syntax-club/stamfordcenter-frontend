@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Divider, Stack, Text } from "@mantine/core";
+import { ActionIcon, Center, Divider, Group, Stack, Text } from "@mantine/core";
 import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
+import { FaDiscord, FaGithub, FaInstagram } from "react-icons/fa";
 import ClubActivitySlideShow from "@components/page_components/about/ClubActivitySlideShow";
 import ClubActivityAccordion from "@components/page_components/about/ClubActivityAccordion";
 
@@ -49,6 +50,21 @@ const carouselImages = [
 	},
 ];
 
+const contactUs = [
+	{
+		icon: <FaDiscord />,
+		link: "https://discord.gg/xE6pq4ZS",
+	},
+	{
+		icon: <FaInstagram />,
+		link: "https://www.instagram.com/stiu_syntax/",
+	},
+	{
+		icon: <FaGithub />,
+		link: "https://github.com/stamford-syntax-club/",
+	},
+];
+
 export default function AboutUsPage() {
 	return (
 		<div className="container mx-auto mt-8 text-center">
@@ -87,6 +103,23 @@ export default function AboutUsPage() {
 				<ClubActivityAccordion activities={activities} />
 
 				<ClubActivitySlideShow carouselImages={carouselImages} />
+
+				<Text className="text-lg font-bold text-white">Reach out to us</Text>
+				<Center>
+					<Group>
+						{contactUs.map((contact, index) => (
+							<ActionIcon
+                                key={`contactUs-icon-${index}`}
+								variant="filled"
+								onClick={() => {
+									window.open(contact.link, "_blank");
+								}}
+							>
+								{contact.icon}
+							</ActionIcon>
+						))}
+					</Group>
+				</Center>
 			</Stack>
 		</div>
 	);
