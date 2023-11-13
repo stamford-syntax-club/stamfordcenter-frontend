@@ -11,7 +11,7 @@ export default function ClubActivitySlideShow({ carouselImages }: ClubActivitySl
 	const autoplay = useRef(AutoPlay({ delay: 2000 }));
 	const [embla, setEmbla] = useState<Embla | null>(null);
 
-	// fix for embla carousel collapsing animation during resize 
+	// fix for embla carousel collapsing animation during resize
 	useEffect(() => {
 		const handleResize = () => {
 			if (embla) {
@@ -38,7 +38,7 @@ export default function ClubActivitySlideShow({ carouselImages }: ClubActivitySl
 			{carouselImages.map((image, index) => (
 				<Carousel.Slide key={`carouselImages-${index}`}>
 					<Image height={300} width={300} src={image.src} alt={image.alt} />
-                    <Text>{image.alt}</Text>
+					<Text>{image.alt}</Text>
 				</Carousel.Slide>
 			))}
 		</Carousel>
