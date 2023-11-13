@@ -53,7 +53,6 @@ export default function AboutUsPage() {
 	return (
 		<div className="container mx-auto mt-8 text-center">
 			<Stack>
-				<Text className="text-3xl font-bold uppercase text-white">About us</Text>
 				<Text className="text-2xl font-bold text-white">Stamford Center</Text>
 				<Text>
 					Stamford Center was conceived to address the pain point that many new students face when trying to
