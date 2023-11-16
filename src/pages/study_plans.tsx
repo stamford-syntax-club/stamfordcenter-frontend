@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 
 import Image from "next/image";
 
+import withAPIBaseLink from "@utils/withAPIBaseLink";
+import { InferGetServerSidePropsType } from "next";
 import useSWR from "swr";
-import { API_BASE_LINK } from "@utils/constants/API_BASE_LINK";
 
 async function fetcher(url: string): Promise<StudyPlanElement[]> {
 	const response = await fetch(url);
@@ -19,7 +20,7 @@ async function fetcher(url: string): Promise<StudyPlanElement[]> {
 	return response.json();
 }
 
-export default function StudyPlansPage() {
+export default function StudyPlansPage({ API_BASE_LINK }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const { data, error, isLoading } = useSWR(`${API_BASE_LINK}/api/resources/study_plans`, fetcher);
 	const [faculties, setFaculties] = useState(new Map<string, StudyPlanElement[]>());
 
@@ -80,7 +81,7 @@ export default function StudyPlansPage() {
 
 						{Array.from(faculties.entries()).map(([faculty, elements]) => (
 							<Tabs.Panel key={"tabpanel" + faculty} value={faculty} pt="xs">
-								<StudyPlanTable elements={elements} />
+								<StudyPlanTable API_BASE_LINK={API_BASE_LINK} elements={elements} />
 							</Tabs.Panel>
 						))}
 					</Tabs>
@@ -89,3 +90,5 @@ export default function StudyPlansPage() {
 		</div>
 	);
 }
+
+export const getServerSideProps = withAPIBaseLink();

@@ -5,14 +5,14 @@ import { StudyPlanElement } from "@ourtypes/study_plans_page_types/StudyPlanElem
 import { useState } from "react";
 import { FaDownload, FaEye, FaSearch } from "react-icons/fa";
 import { StudyPlanTableRowsTemplate } from "./StudyPlanTableRowsTemplate";
-import { API_BASE_LINK } from "@utils/constants/API_BASE_LINK";
 
 interface StudyPlanTableProps {
+	API_BASE_LINK: string;
 	elements: StudyPlanElement[];
 }
 
 // XD
-async function downloadFile(element: StudyPlanElement) {
+async function downloadFile(API_BASE_LINK: string, element: StudyPlanElement) {
 	const fileUrl = `${API_BASE_LINK}/api/files/${element.fileKey}?download=true`;
 
 	try {
@@ -36,7 +36,7 @@ async function downloadFile(element: StudyPlanElement) {
 	}
 }
 
-export function StudyPlanTable({ elements }: StudyPlanTableProps) {
+export function StudyPlanTable({ elements, API_BASE_LINK }: StudyPlanTableProps) {
 	const [values, handlers] = useListState(elements);
 	const [searchString, setSearchString] = useDebouncedState("", 500);
 
@@ -56,7 +56,7 @@ export function StudyPlanTable({ elements }: StudyPlanTableProps) {
 		const checkedStudyPlanElements = getAllCheckedStudyPlanElements();
 
 		for (const element of checkedStudyPlanElements) {
-			await downloadFile(element);
+			await downloadFile(API_BASE_LINK, element);
 		}
 
 		setDownloading(false);

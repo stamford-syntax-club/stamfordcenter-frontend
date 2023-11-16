@@ -5,9 +5,10 @@ import { useDebouncedValue, useDisclosure } from "@mantine/hooks";
 import { Resource } from "@ourtypes/resources_page_types/ResourceTypes";
 import { useEffect, useState } from "react";
 
-import { API_BASE_LINK } from "@utils/constants/API_BASE_LINK";
+import withAPIBaseLink from "@utils/withAPIBaseLink";
+import { InferGetServerSidePropsType } from "next";
 
-export default function ResourcesPage() {
+export default function ResourcesPage({ API_BASE_LINK }: InferGetServerSidePropsType<typeof getServerSideProps>) {
 	const [resourceList, setResourceList] = useState<Resource[]>([]);
 	const [searchQuery, setSearchQuery] = useState("");
 
@@ -17,7 +18,7 @@ export default function ResourcesPage() {
 				setResourceList(data);
 			});
 		});
-	}, []);
+	}, [API_BASE_LINK]);
 
 	const [selectedResource, setSelectedResource] = useState(resourceList[0]);
 	const [isDrawerOpen, { open: openDrawer, close: closeDrawer }] = useDisclosure(false);
@@ -66,3 +67,5 @@ export default function ResourcesPage() {
 		</div>
 	);
 }
+
+export const getServerSideProps = withAPIBaseLink();
