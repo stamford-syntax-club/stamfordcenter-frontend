@@ -93,7 +93,7 @@ const ContactInfoPage = () => (
 		{/* Header.Description */}
 		<Text className="text-center">
 			Explore the diverse departments below to find the contact information you need. Our dedicated staff is ready
-			to help you on your educational journey. Feel free to reach out, and we'll ensure you get the support and
+			to help you on your educational journey. Feel free to reach out, and we&apos;ll ensure you get the support and
 			information required to succeed during your time at Stamford
 		</Text>
 
