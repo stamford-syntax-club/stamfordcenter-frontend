@@ -29,8 +29,8 @@ export default function Home() {
 		<div className="container mx-auto mt-12">
 			<section className="relative w-full">
 				{/* Logo */}
-				<div className="absolute right-0 hidden aspect-square w-[35%] 2xl:inline">
-					<Image src="/assets/images/logos/ssc-mascot-clearbg.png" alt="Stamford Syntax Club Mascot" fill />
+				<div className="absolute right-20 hidden aspect-[1213/2210] w-1/4 2xl:inline">
+					<Image src="/assets/images/logos/ssc-mascot-new.png" alt="Stamford Syntax Club Mascot" fill />
 				</div>
 
 				{/* Header */}
