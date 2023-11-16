@@ -69,7 +69,7 @@ const ContactCard = ({
   imgUrl,
   email,
 }: ContactCardProps) => (
-  <Card className="p-10 md:p-10 lg:p-12 max-w-md md:max-w-lg lg:max-w-xl mx-auto rounded-lg">
+  <Card className="p-10 md:p-10 lg:p-10 max-w-[17rem] mx-auto rounded-lg">
     <CardSection className="max-w-xs">
       <Image className="rounded-lg w-full h-full" src={imgUrl} alt="Contact Img" />
     </CardSection>
@@ -94,6 +94,7 @@ const ContactCard = ({
   </Card>
 );
 
+
 const ContactInfoPage = () => (
   <div className="container mx-auto mt-12 justify-center">
     {/* Header */}
@@ -110,7 +111,7 @@ const ContactInfoPage = () => (
       support and information required to succeed during your time at Stamford
     </Text>
 
-    <Group className="m-14 grid items-center justify-center gap-14 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+    <Group className="m-8 grid items-center justify-center gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
       {contactCards.map((card) => (
         <ContactCard key={`contactcard-${card.title}`} {...card} />
       ))}
