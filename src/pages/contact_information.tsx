@@ -79,11 +79,9 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 		</CardSection>
 
 		<Card.Section className="mt-4">
-			<div className="w-full">
-				<a href={`mailto:${email}`}>
-					<Button className="h-10 w-full bg-slate-800 text-blue-300">Email</Button>
-				</a>
-			</div>
+			<Button component="a" href={`mailto:${email}`} className="h-10 w-full bg-slate-800 text-blue-300">
+				Email
+			</Button>
 		</Card.Section>
 	</Card>
 );
