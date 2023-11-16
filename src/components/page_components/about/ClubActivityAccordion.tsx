@@ -1,5 +1,5 @@
-import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
 import { Accordion, Text } from "@mantine/core";
+import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
 
 interface ClubActivityAccordionProps {
 	activities: ClubActivities[];
@@ -7,7 +7,7 @@ interface ClubActivityAccordionProps {
 
 export default function ClubActivityAccordion({ activities }: ClubActivityAccordionProps) {
 	return (
-		<Accordion multiple variant="filled">
+		<Accordion multiple variant="contained">
 			{activities.map((achievement, index) => (
 				<Accordion.Item key={`achievement-${index}`} value={`achievemment-${index}`}>
 					<Accordion.Control>

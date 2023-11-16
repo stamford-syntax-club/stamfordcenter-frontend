@@ -1,9 +1,9 @@
-import Link from "next/link";
+import ImageSlideShow from "@components/core/ImageSlideShow";
+import ClubActivityAccordion from "@components/page_components/about/ClubActivityAccordion";
 import { ActionIcon, Center, Divider, Group, Stack, Text } from "@mantine/core";
 import { ClubActivities } from "@ourtypes/about_page_types/ClubAchievement";
+import Link from "next/link";
 import { FaDiscord, FaGithub, FaInstagram } from "react-icons/fa";
-import ClubActivitySlideShow from "@components/page_components/about/ClubActivitySlideShow";
-import ClubActivityAccordion from "@components/page_components/about/ClubActivityAccordion";
 
 const activities: ClubActivities[] = [
 	{
@@ -70,7 +70,7 @@ export default function AboutUsPage() {
 		<div className="container mx-auto mt-8 text-center">
 			<Stack>
 				<Text className="text-2xl font-bold text-white">Stamford Center</Text>
-				<Text>
+				<Text className="-mt-4">
 					Stamford Center was conceived to address the pain point that many new students face when trying to
 					locate essential resources on official university websites. Recognizing the frustration of
 					navigating through various platforms for registration, learning tools, and university department
@@ -80,7 +80,7 @@ export default function AboutUsPage() {
 				</Text>
 
 				<Text className="text-lg font-bold text-white">Resources on our website</Text>
-				<Text>
+				<Text className="-mt-4">
 					Resources on our website are taken from official university websites and are updated regularly to be
 					as accurate as possible. We also provide a search function to help you find the information you
 					need. If the resource you are looking for is not available on our website, please inform us by
@@ -93,7 +93,7 @@ export default function AboutUsPage() {
 				<Divider size="md" my="xl" />
 
 				<Text className="text-2xl font-bold text-white">Stamford Syntax Club</Text>
-				<Text>
+				<Text className="-mt-4">
 					Stamford Syntax Club is a student-run club at Stamford International University that aims to use
 					technology to improve the lives of students and faculty members. We are a group of students who are
 					passionate about technology and want to make a difference in the Stamford community.
@@ -102,15 +102,15 @@ export default function AboutUsPage() {
 
 				<ClubActivityAccordion activities={activities} />
 
-				<ClubActivitySlideShow carouselImages={carouselImages} />
+				<ImageSlideShow carouselImages={carouselImages} />
 
 				<Text className="text-lg font-bold text-white">Reach out to us</Text>
 				<Center>
 					<Group>
 						{contactUs.map((contact, index) => (
 							<ActionIcon
-                                key={`contactUs-icon-${index}`}
-								variant="filled"
+								key={`contactUs-icon-${index}`}
+								variant="outline"
 								onClick={() => {
 									window.open(contact.link, "_blank");
 								}}
