@@ -27,7 +27,7 @@ const contactCards = [
 	},
 	{
 		imgUrl: imageUrl,
-		title: "Registra",
+		title: "Registrar",
 		operationTitle: "Operation Hours:",
 		operationTime: "Mon-Fri 08:30 - 17.30",
 		email: "registrar.bkk@stamford.edu",
