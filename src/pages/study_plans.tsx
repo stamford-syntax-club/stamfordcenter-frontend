@@ -21,8 +21,6 @@ async function fetcher(url: string): Promise<StudyPlanElement[]> {
 }
 
 export default function StudyPlansPage({ API_BASE_LINK }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-	console.log("Base link:", API_BASE_LINK);
-
 	const { data, error, isLoading } = useSWR(`${API_BASE_LINK}/api/resources/study_plans`, fetcher);
 	const [faculties, setFaculties] = useState(new Map<string, StudyPlanElement[]>());
 
