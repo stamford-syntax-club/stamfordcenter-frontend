@@ -38,10 +38,6 @@ export const navigationItems: NavigationItem[] = [
 		title: "About Us",
 		href: "/about",
 	},
-	{
-		title: "More",
-		href: "/more",
-	},
 ];
 
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
