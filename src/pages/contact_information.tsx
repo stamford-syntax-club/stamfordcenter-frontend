@@ -56,7 +56,7 @@ const contactCards = [
 ];
 
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => (
-	<Card className="mx-auto max-w-[17rem] rounded-lg p-10 md:p-10 lg:p-10">
+	<Card className="mx-auto max-w-xs rounded-lg p-10 md:p-10 lg:p-10">
 		<CardSection className="max-w-xs">
 			<Image className="h-full w-full rounded-lg" src={imgUrl} alt="Contact Img" />
 		</CardSection>
