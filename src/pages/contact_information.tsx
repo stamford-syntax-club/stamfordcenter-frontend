@@ -97,11 +97,13 @@ const ContactInfoPage = () => (
 			information required to succeed during your time at Stamford
 		</Text>
 
-		<Group className="m-8 grid items-center justify-center gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+		<Grid justify="center" align="center" className="my-8 px-0 md:px-16 lg:px-32">
 			{contactCards.map((card) => (
-				<ContactCard key={`contactcard-${card.title}`} {...card} />
+				<Grid.Col span={{ base: 12, md: 6, lg: 4 }} key={`contactcard-${card.title}`}>
+					<ContactCard {...card} />
+				</Grid.Col>
 			))}
-		</Group>
+		</Grid>
 	</div>
 );
 export default ContactInfoPage;
