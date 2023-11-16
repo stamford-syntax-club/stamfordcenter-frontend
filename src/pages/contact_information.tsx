@@ -106,4 +106,5 @@ const ContactInfoPage = () => (
 		</Grid>
 	</div>
 );
+
 export default ContactInfoPage;
