@@ -58,7 +58,14 @@ const contactCards = [
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => (
 	<Card className="mx-auto max-w-xs rounded-lg p-10 md:p-10 lg:p-10">
 		<CardSection className="max-w-xs">
-			<Image className="h-full w-full rounded-lg" src={imgUrl} alt="Contact Img" />
+			<Image
+				component={NextImage}
+				className="h-full w-full rounded-lg"
+				src={imgUrl}
+				alt="Stamford Logo"
+				width={384}
+				height={216}
+			/>
 		</CardSection>
 
 		<CardSection className="font-open-sans mt-4 flex text-lg font-semibold text-white md:mt-6 lg:mt-8">
