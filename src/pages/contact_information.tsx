@@ -75,7 +75,9 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 				{title}
 			</CardSection>
 
-			<Card.Section className="text-gray-500">{email}</Card.Section>
+			<Card.Section>
+				<Text c="dimmed">{email}</Text>
+			</Card.Section>
 
 			<CardSection className="mt-2 flex items-center text-sm md:mt-4 md:text-base lg:mt-6">
 				{operationTitle}
