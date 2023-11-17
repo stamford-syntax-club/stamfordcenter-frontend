@@ -1,4 +1,4 @@
-import { Image, Paper, ThemeIcon, UnstyledButton } from "@mantine/core";
+import { Image, Paper, Grid, ThemeIcon, UnstyledButton } from "@mantine/core";
 import { useScrollIntoView } from '@mantine/hooks';
 import { Carousel } from '@mantine/carousel';
 import React from "react";
@@ -114,60 +114,72 @@ export default function StudentCouncilPage() {
                 </UnstyledButton>
             </div>
 
-            <div className="container mx-auto pt-80" ref={targetRef}>
-                <div className="flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between w-full">
-                    <Paper className="flex md:w-1/2 md:h-[27rem] h-72 w-full rounded-lg">
-                        <div className="relative">
-                            <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">About</h1>
-                            <p className="md:pl-6 pl-3 md:w-96 w-64 text-base">
-                                The Student Council is the official student body of Stamford International University. The
-                                council is responsible for representing the student body, organizing events, and
+            <Grid className="container mx-auto pt-80" ref={targetRef} justify="center" align="center">
+                <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Paper className="flex flex-col rounded-lg p-6 md:h-96 md:flex-row">
+                        <div>
+                            <h1 className="text-xl md:text-4xl">About</h1>
+                            <p className="w-72 text-lg">
+                                The Student Council is the official student body of Stamford International University.
+                                The council is responsible for representing the student body, organizing events, and
                                 communicating with the university&apos;s administration.
                             </p>
-                            <div className="absolute top-0 md:ml-[380px] ml-[280px] md:mt-7 mt-4">
-                                <Image className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/group.jpg" alt="" />
-                            </div>
                         </div>
+                        <Image
+                            className="rounded-md md:ml-auto"
+                            src="/assets/images/student_council/group.jpg"
+                            alt="Student Council Group Photo"
+                            width={3641 / 11}
+                            height={3545 / 11}
+                        />
                     </Paper>
-                    <Paper className="flex md:w-1/2 md:h-[27rem] h-72 w-full rounded-lg">
-                        <div className="relative">
-                            <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">Upcoming Event</h1>
-                            <p className="md:pl-6 pl-3 md:w-96 w-64 text-base">
-                                The &quot;Welcome Freshmen&quot; event, orchestrated by the Student Council at Stamford International University,
-                                symbolizes the warm embrace awaiting new students. This event serves as an introduction to the vibrant community,
-                                showcasing the Council&rsquo;s dedication to fostering a welcoming environment and facilitating a
-                                smooth transition into university life.
+                </Grid.Col>
+                <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Paper className="flex flex-col rounded-lg p-6 md:h-96 md:flex-row">
+                        <div>
+                            <h1 className="text-xl md:text-4xl">Upcoming Events</h1>
+                            <p className="w-96 text-base">
+                                The &quot;Welcome Freshmen&quot; event, orchestrated by the Student Council at Stamford
+                                International University, symbolizes the warm embrace awaiting new students. This event
+                                serves as an introduction to the vibrant community, showcasing the Council&rsquo;s
+                                dedication to fostering a welcoming environment and facilitating a smooth transition
+                                into university life.
                             </p>
-                            <div className="absolute top-0 md:ml-96 ml-72 md:mt-7 mt-4">
-                                <Image className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/example.png" alt="" />
-                            </div>
                         </div>
+                        <Image
+                            className="rounded-md md:ml-auto"
+                            src="/assets/images/student_council/example.png"
+                            alt="Example Event Poster"
+                            width={3456 / 14}
+                            height={4608 / 14}
+                        />
                     </Paper>
-                </div>
-                <div className="pt-20">
-                    <Carousel withIndicators
-                        slideSize="25%" height={200} slideGap="md" align="start" >
-                        {carouselSlides.map((slide, index) => (
-                            <Carousel.Slide key={index}>
-                                <Image src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
-                            </Carousel.Slide>
-                        ))}
-                    </Carousel>
-                </div>
+                </Grid.Col>
+            </Grid>
 
-                <div className="pt-10 flex flex-row items-center justify-center space-x-5">
-                    <a href="https://www.instagram.com/studentcouncilstiu/" target="_blank">
-                        <UnstyledButton>
-                            <FaInstagram className="w-10 h-10" />
-                        </UnstyledButton>
-                    </a>
-                    <a href="https://www.tiktok.com/@studentcouncilstiu?is_from_webapp=1&sender_device=pc" target="_blank">
-                        <UnstyledButton>
-                            <FaTiktok className="w-10 h-10" />
-                        </UnstyledButton>
-                    </a>
-                </div>
+            <div className="pt-20">
+                <Carousel withIndicators
+                    slideSize="25%" height={200} slideGap="md" align="start" >
+                    {carouselSlides.map((slide, index) => (
+                        <Carousel.Slide key={index}>
+                            <Image src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
+                        </Carousel.Slide>
+                    ))}
+                </Carousel>
             </div>
-        </div >
+
+            <div className="pt-10 flex flex-row items-center justify-center space-x-5">
+                <a href="https://www.instagram.com/studentcouncilstiu/" target="_blank">
+                    <UnstyledButton>
+                        <FaInstagram className="w-10 h-10" />
+                    </UnstyledButton>
+                </a>
+                <a href="https://www.tiktok.com/@studentcouncilstiu?is_from_webapp=1&sender_device=pc" target="_blank">
+                    <UnstyledButton>
+                        <FaTiktok className="w-10 h-10" />
+                    </UnstyledButton>
+                </a>
+            </div>
+        </div>
     );
 }
