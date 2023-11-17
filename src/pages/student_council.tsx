@@ -9,8 +9,8 @@ import { FaArrowDown, FaInstagram, FaTiktok } from "react-icons/fa";
 const cards = [
     {
         id: 1,
-        description: "Vice-President Internationality & Creativity",
-        title: "Anuj Thapa",
+        name: "Anuj Thapa",
+        position: "Vice-President Internationality & Creativity",
         imgURL: "/assets/images/student_council/Anuj.jpg",
         style: {
             marginLeft: "auto",
@@ -19,8 +19,8 @@ const cards = [
     },
     {
         id: 2,
-        description: "Vice-President Social Media & Marketing",
-        title: "Isarapan Kotchaphong",
+        name: "Isarapan Kotchaphong",
+        position: "Vice-President Social Media & Marketing",
         imgURL: "/assets/images/student_council/Ice.jpg",
         style: {
             marginLeft: "10px",
@@ -29,8 +29,8 @@ const cards = [
     },
     {
         id: 3,
-        description: "President",
-        title: "Ayham A.H. Tamim",
+        name: "Ayham A.H. Tamim",
+        position: "President",
         imgURL: "/assets/images/student_council/Ayham.jpg",
         style: {
             marginLeft: "10px",
@@ -39,8 +39,8 @@ const cards = [
     },
     {
         id: 4,
-        description: "Vice-President Clubs, Activites & Events",
-        title: "Napasorn Kitireanglarp",
+        name: "Napasorn Kitireanglarp",
+        position: "Vice-President Clubs, Activites & Events",
         imgURL: "/assets/images/student_council/Ploy.jpg",
         style: {
             marginLeft: "10px",
@@ -49,8 +49,8 @@ const cards = [
     },
     {
         id: 5,
-        description: "Vice-President Academic Affairs",
-        title: "Ousa Hem",
+        name: "Ousa Hem",
+        position: "Vice-President Academic Affairs",
         imgURL: "/assets/images/student_council/Sky.jpg",
         style: {
             marginRight: "auto",
@@ -83,26 +83,26 @@ export default function StudentCouncilPage() {
             <div className="flex flex-row">
                 {cards.map((card) => (
                     <div
-                        className="w-[250px] h-[480px] rounded-lg transition-all duration-100 transform cursor-default hover:-translate-y-2 relative group"
+                        className="w-64 h-[30rem] rounded-lg transition-all duration-100 transform cursor-default hover:-translate-y-2 relative group"
                         style={card.style}
                         key={"profile_card" + card.id}
                     >
-                        <div className="w-full h-full bg-black">
-                            <img
+                        <div className="w-full h-full bg-black rounded-lg">
+                            <Image
                                 className="w-full h-full object-cover rounded-lg"
                                 src={card.imgURL}
-                                alt={card.title}
+                                alt={card.name}
                             />
                             <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 fixed text-center left-0 right-0 bottom-0 text-white p-4">
-                                <h3 className="md:text-xl text-xs font-bold">{card.title}</h3>
-                                <p className="md:text-base text-xs font-bold">{card.description}</p>
+                                <h3 className="md:text-xl text-xs font-bold">{card.name}</h3>
+                                <p className="md:text-base text-xs font-bold">{card.position}</p>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center animate-bounce">
                 <UnstyledButton onClick={() =>
                     scrollIntoView({
                         alignment: 'center',
@@ -116,10 +116,10 @@ export default function StudentCouncilPage() {
 
             <div className="container mx-auto pt-80" ref={targetRef}>
                 <div className="flex lg:flex-row flex-col lg:space-y-0 space-y-4 justify-between w-full">
-                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-full rounded-lg">
+                    <Paper className="flex md:w-1/2 md:h-[27rem] h-72 w-full rounded-lg">
                         <div className="relative">
                             <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">About</h1>
-                            <p className="md:pl-6 pl-3 md:w-[350px] w-[250px] text-base">
+                            <p className="md:pl-6 pl-3 md:w-96 w-64 text-base">
                                 The Student Council is the official student body of Stamford International University. The
                                 council is responsible for representing the student body, organizing events, and
                                 communicating with the university&apos;s administration.
@@ -129,16 +129,16 @@ export default function StudentCouncilPage() {
                             </div>
                         </div>
                     </Paper>
-                    <Paper className="flex md:w-[47%] md:h-[27rem] h-72 w-full rounded-lg">
+                    <Paper className="flex md:w-1/2 md:h-[27rem] h-72 w-full rounded-lg">
                         <div className="relative">
                             <h1 className="md:pl-6 md:text-4xl pl-3 text-xl">Upcoming Event</h1>
-                            <p className="md:pl-6 pl-3 md:w-[350px] w-[250px] text-base">
-                                The "Welcome Freshmen" event, orchestrated by the Student Council at Stamford International University,
+                            <p className="md:pl-6 pl-3 md:w-96 w-64 text-base">
+                                The &quot;Welcome Freshmen&quot; event, orchestrated by the Student Council at Stamford International University,
                                 symbolizes the warm embrace awaiting new students. This event serves as an introduction to the vibrant community,
-                                showcasing the Council's dedication to fostering a welcoming environment and facilitating a
-                                smooth transition into university life..
+                                showcasing the Council&rsquo;s dedication to fostering a welcoming environment and facilitating a
+                                smooth transition into university life.
                             </p>
-                            <div className="absolute top-0 md:ml-[380px] ml-[280px] md:mt-7 mt-4">
+                            <div className="absolute top-0 md:ml-96 ml-72 md:mt-7 mt-4">
                                 <Image className="md:w-80 md:h-96 w-52 h-64 rounded-lg object-cover" src="/assets/images/student_council/example.png" alt="" />
                             </div>
                         </div>
