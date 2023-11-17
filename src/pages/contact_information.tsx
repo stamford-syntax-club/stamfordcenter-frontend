@@ -90,8 +90,12 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 
 				<CopyButton value={email}>
 					{({ copied, copy }) => (
-						<Button className={`mt-2 h-10 w-full ${copied ? 'bg-green-500' : ''}`}
-						variant={copied ? 'filled' : 'light'} onClick={copy}>
+						<Button
+							className="mt-2 h-10 w-full"
+							color={copied ? "green" : ""}
+							variant={copied ? "filled" : "light"}
+							onClick={copy}
+						>
 							{copied ? "Copied" : "Copy Email Address"}
 						</Button>
 					)}
