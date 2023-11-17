@@ -1,4 +1,6 @@
-import { Card, Image, Text, Button, Group, CardSection } from "@mantine/core";
+import { Card, Image, Text, Button, Grid, CardSection } from "@mantine/core";
+import NextImage from "next/image";
+import React, { useState } from "react";
 
 interface ContactCardProps {
 	title: string;
@@ -55,36 +57,59 @@ const contactCards = [
 	},
 ];
 
-const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => (
-	<Card className="mx-auto max-w-xs rounded-lg p-10 md:p-10 lg:p-10">
-		<CardSection className="max-w-xs">
-			<Image
-				component={NextImage}
-				className="h-full w-full rounded-lg"
-				src={imgUrl}
-				alt="Stamford Logo"
-				width={384}
-				height={216}
-			/>
-		</CardSection>
+const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => {
+	const [isCopied, setIsCopied] = useState(false);
 
-		<CardSection className="font-open-sans mt-4 flex text-lg font-semibold text-white md:mt-6 lg:mt-8">
-			{title}
-		</CardSection>
+	const handleCopyToClipboard = async () => {
+		try {
+			await navigator.clipboard.writeText(email);
+			setIsCopied(true);
 
-		<CardSection className="mt-2 flex items-center text-sm md:mt-4 md:text-base lg:mt-6">
-			{operationTitle}
-			<br />
-			{operationTime}
-		</CardSection>
+			setTimeout(() => {
+				setIsCopied(false);
+			}, 1500);
+		} catch (error) {
+			console.error("Unable to copy to clipboard", error);
+		}
+	};
+	return (
+		<Card className="mx-auto max-w-xs rounded-lg p-10 md:p-10 lg:p-10">
+			<CardSection className="max-w-xs">
+				<Image
+					component={NextImage}
+					className="h-full w-full rounded-lg"
+					src={imgUrl}
+					alt="Stamford Logo"
+					width={384}
+					height={216}
+				/>
+			</CardSection>
 
-		<Card.Section className="mt-4">
-			<Button component="a" href={`mailto:${email}`} className="h-10 w-full bg-slate-800 text-blue-300">
-				Email
-			</Button>
-		</Card.Section>
-	</Card>
-);
+			<CardSection className="font-open-sans mt-4 flex text-lg font-semibold text-white md:mt-6 lg:mt-8">
+				{title}
+			</CardSection>
+
+			<CardSection className="mt-2 flex items-center text-sm md:mt-4 md:text-base lg:mt-6">
+				{operationTitle}
+				<br />
+				{operationTime}
+			</CardSection>
+
+			<Card.Section className="mt-4">
+				<Button component="a" href={`mailto:${email}`} className="h-10 w-full">
+					Email
+				</Button>
+				<Button 
+					onClick={handleCopyToClipboard}
+					className={`mt-2 h-10 w-full ${isCopied ? 'bg-green-500' : ''}`}
+					variant={isCopied ? 'filled' : 'light'}
+				>
+					{isCopied ? 'Copied!' : 'Copy'}
+				</Button>
+			</Card.Section>
+		</Card>
+	);
+};
 
 const ContactInfoPage = () => (
 	<div className="container mx-auto mt-12 justify-center">
@@ -98,8 +123,8 @@ const ContactInfoPage = () => (
 		{/* Header.Description */}
 		<Text className="text-center">
 			Explore the diverse departments below to find the contact information you need. Our dedicated staff is ready
-			to help you on your educational journey. Feel free to reach out, and we&apos;ll ensure you get the support and
-			information required to succeed during your time at Stamford
+			to help you on your educational journey. Feel free to reach out, and we&apos;ll ensure you get the support
+			and information required to succeed during your time at Stamford
 		</Text>
 
 		<Grid justify="center" align="center" className="my-8 px-0 md:px-16 lg:px-32">
