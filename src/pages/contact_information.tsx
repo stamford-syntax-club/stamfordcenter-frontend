@@ -1,4 +1,4 @@
-import { Card, Image, Text, Button, Grid, CardSection } from "@mantine/core";
+import { Card, Image, Text, Button, Grid, CardSection, CopyButton } from "@mantine/core";
 import NextImage from "next/image";
 import React, { useState } from "react";
 
@@ -58,20 +58,6 @@ const contactCards = [
 ];
 
 const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: ContactCardProps) => {
-	const [isCopied, setIsCopied] = useState(false);
-
-	const handleCopyToClipboard = async () => {
-		try {
-			await navigator.clipboard.writeText(email);
-			setIsCopied(true);
-
-			setTimeout(() => {
-				setIsCopied(false);
-			}, 1500);
-		} catch (error) {
-			console.error("Unable to copy to clipboard", error);
-		}
-	};
 	return (
 		<Card className="mx-auto max-w-xs rounded-lg p-10 md:p-10 lg:p-10">
 			<CardSection className="max-w-xs">
@@ -89,6 +75,8 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 				{title}
 			</CardSection>
 
+			<Card.Section className="text-gray-500">{email}</Card.Section>
+
 			<CardSection className="mt-2 flex items-center text-sm md:mt-4 md:text-base lg:mt-6">
 				{operationTitle}
 				<br />
@@ -99,13 +87,14 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 				<Button component="a" href={`mailto:${email}`} className="h-10 w-full">
 					Email
 				</Button>
-				<Button 
-					onClick={handleCopyToClipboard}
-					className={`mt-2 h-10 w-full ${isCopied ? 'bg-green-500' : ''}`}
-					variant={isCopied ? 'filled' : 'light'}
-				>
-					{isCopied ? 'Copied!' : 'Copy Email Address'}
-				</Button>
+
+				<CopyButton value={email}>
+					{({ copied, copy }) => (
+						<Button color={copied ? "teal" : "blue"} onClick={copy} className="h-10 w-full mt-4">
+							{copied ? "Copied" : "Copy Email Address"}
+						</Button>
+					)}
+				</CopyButton>
 			</Card.Section>
 		</Card>
 	);
