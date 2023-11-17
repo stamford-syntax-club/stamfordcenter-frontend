@@ -104,7 +104,7 @@ const ContactCard = ({ title, operationTime, operationTitle, imgUrl, email }: Co
 					className={`mt-2 h-10 w-full ${isCopied ? 'bg-green-500' : ''}`}
 					variant={isCopied ? 'filled' : 'light'}
 				>
-					{isCopied ? 'Copied!' : 'Copy'}
+					{isCopied ? 'Copied!' : 'Copy Email Address'}
 				</Button>
 			</Card.Section>
 		</Card>
