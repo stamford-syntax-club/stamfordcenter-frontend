@@ -1,7 +1,6 @@
 import "@mantine/core/styles.css";
 import '@mantine/carousel/styles.css';
 import "../styles/globals.css";
-import "@mantine/carousel/styles.css";
 
 import ApplicationShell from "@components/core/ApplicationShell";
 import { MantineProvider } from "@mantine/core";
