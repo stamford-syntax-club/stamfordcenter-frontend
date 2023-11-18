@@ -2,6 +2,8 @@ import { Carousel, Embla } from "@mantine/carousel";
 import { Image, Text } from "@mantine/core";
 import AutoPlay from "embla-carousel-autoplay";
 import { useEffect, useRef, useState } from "react";
+import NextImage from "next/image";
+
 
 interface ImageSlideShowShowProps {
 	carouselImages: { src: string; alt: string }[];
@@ -38,7 +40,8 @@ export default function ImageSlideShow({ carouselImages }: ImageSlideShowShowPro
 		>
 			{carouselImages.map((image, index) => (
 				<Carousel.Slide key={`carouselImages-${index}`}>
-					<Image height={300} width={300} src={image.src} alt={image.alt} />
+					<Image component={NextImage}
+						height={300} width={300} src={image.src} alt={image.alt} />
 					<Text>{image.alt}</Text>
 				</Carousel.Slide>
 			))}

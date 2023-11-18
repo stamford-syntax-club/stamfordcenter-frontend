@@ -36,6 +36,10 @@ export const navigationItems: NavigationItem[] = [
 				title: "Contact Information",
 				href: "/contact_information",
 			},
+			{
+				title: "Student Council",
+				href: "/student_council",
+			},
 		],
 	},
 	{
