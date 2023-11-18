@@ -1,4 +1,5 @@
 import { Image, Paper, Grid, ThemeIcon, UnstyledButton } from "@mantine/core";
+import ImageSlideShow from "@components/core/ImageSlideShow";
 import { useScrollIntoView } from '@mantine/hooks';
 import { Carousel } from '@mantine/carousel';
 import React from "react";
@@ -158,14 +159,7 @@ export default function StudentCouncilPage() {
             </Grid>
 
             <div className="pt-20">
-                <Carousel withIndicators
-                    slideSize="25%" height={200} slideGap="md" align="start" >
-                    {carouselSlides.map((slide, index) => (
-                        <Carousel.Slide key={index}>
-                            <Image src={slide.src} alt={slide.alt} className="w-full h-full object-cover" />
-                        </Carousel.Slide>
-                    ))}
-                </Carousel>
+                <ImageSlideShow carouselImages={carouselSlides} />
             </div>
 
             <div className="pt-10 flex flex-row items-center justify-center space-x-5">
