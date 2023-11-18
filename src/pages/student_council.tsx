@@ -1,9 +1,9 @@
 import { Image, Paper, Grid, ThemeIcon, UnstyledButton } from "@mantine/core";
 import ImageSlideShow from "@components/core/ImageSlideShow";
 import { useScrollIntoView } from '@mantine/hooks';
-import { Carousel } from '@mantine/carousel';
 import React from "react";
 import { FaArrowDown, FaInstagram, FaTiktok } from "react-icons/fa";
+import NextImage from "next/image";
 
 
 
@@ -63,11 +63,11 @@ const cards = [
 
 
 const carouselSlides = [
-    { src: "/assets/images/student_council/1.jpg", alt: "Slide 1" },
-    { src: "/assets/images/student_council/2.jpg", alt: "Slide 2" },
-    { src: "/assets/images/student_council/3.jpg", alt: "Slide 3" },
-    { src: "/assets/images/student_council/4.jpg", alt: "Slide 4" },
-    { src: "/assets/images/student_council/5.jpg", alt: "Slide 5" },
+    { src: "/assets/images/student_council/1.jpg", alt: "Welcoming And Farewell Party Student Council 2023" },
+    { src: "/assets/images/student_council/2.jpg", alt: "STIU Talk 2023" },
+    { src: "/assets/images/student_council/3.jpg", alt: "Auytthaya Cultural Trip 2023" },
+    { src: "/assets/images/student_council/4.jpg", alt: "Welcome Freshmen Term 1/2023" },
+    { src: "/assets/images/student_council/5.jpg", alt: "Student Club Fair Term 1/2023" },
 ];
 
 
@@ -90,9 +90,12 @@ export default function StudentCouncilPage() {
                     >
                         <div className="w-full h-full bg-black rounded-lg">
                             <Image
-                                className="w-full h-full object-cover rounded-lg"
+                                component={NextImage}
+                                className="h-full w-full rounded-lg object-cover"
                                 src={card.imgURL}
                                 alt={card.name}
+                                width={1000}
+                                height={1000}
                             />
                             <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 fixed text-center left-0 right-0 bottom-0 text-white p-4">
                                 <h3 className="md:text-xl text-xs font-bold">{card.name}</h3>
@@ -127,6 +130,7 @@ export default function StudentCouncilPage() {
                             </p>
                         </div>
                         <Image
+                            component={NextImage}
                             className="rounded-md md:ml-auto"
                             src="/assets/images/student_council/group.jpg"
                             alt="Student Council Group Photo"
@@ -148,6 +152,7 @@ export default function StudentCouncilPage() {
                             </p>
                         </div>
                         <Image
+                            component={NextImage}
                             className="rounded-md md:ml-auto"
                             src="/assets/images/student_council/example.png"
                             alt="Example Event Poster"
