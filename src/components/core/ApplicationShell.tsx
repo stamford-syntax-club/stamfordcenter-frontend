@@ -17,7 +17,7 @@ export default function ApplicationShell({ children }: { children: React.ReactNo
 	return (
 		<AppShell
 			header={{ height: 70 }}
-			navbar={{ width: 300, breakpoint: "sm", collapsed: { desktop: true, mobile: !opened } }}
+			navbar={{ width: 300, breakpoint: "lg", collapsed: { desktop: true, mobile: !opened } }}
 			padding="md"
 		>
 			<ApplicationHeader opened={opened} toggle={toggle} />

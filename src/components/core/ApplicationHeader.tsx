@@ -54,7 +54,7 @@ export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderP
 			<div style={{ display: "flex", alignItems: "center", height: "100%" }}>
 				<div className="container relative mx-auto h-full">
 					<div className="flex h-full flex-row items-center">
-						<Burger opened={opened} onClick={toggle} hiddenFrom="md" size="lg" />
+						<Burger opened={opened} onClick={toggle} hiddenFrom="lg" size="lg" />
 
 						<Logo
 							link="/"
