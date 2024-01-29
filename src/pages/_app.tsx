@@ -37,6 +37,7 @@ export default function App(props: AppProps) {
 
 			<MantineProvider theme={theme} defaultColorScheme="dark">
 				<Notifications />
+
 				<ApplicationShell>
 					<Component {...pageProps} />
 				</ApplicationShell>

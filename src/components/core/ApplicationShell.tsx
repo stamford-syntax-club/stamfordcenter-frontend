@@ -1,4 +1,4 @@
-import { AppShell } from "@mantine/core";
+import { AppShell, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -22,7 +22,6 @@ export default function ApplicationShell({ children }: { children: React.ReactNo
 		>
 			<ApplicationHeader opened={opened} toggle={toggle} />
 			<ApplicationNavigationBar opened={opened} />
-
 			<AppShell.Main>{children}</AppShell.Main>
 		</AppShell>
 	);

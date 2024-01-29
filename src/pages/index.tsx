@@ -1,8 +1,12 @@
 import QuickLinksSection from "@components/page_sections/QuickLinksSection";
 import { Stack, Text, ThemeIcon } from "@mantine/core";
+import { InferGetServerSidePropsType } from "next";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 import { FaCheck } from "react-icons/fa";
+import { getServerSideProps } from "./resources";
+import { Announcement } from "@components/page_components/announcement/Announcement";
 
 const talkingPoints = [
 	{
@@ -24,14 +28,28 @@ const talkingPoints = [
 	},
 ];
 
-export default function Home() {
+export default function Home({ API_BASE_LINK }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+	// const [announcementData, setAnnouncementData] = useState<[]>([]);
+
+	// useEffect(() => {
+	// 	fetch(`${API_BASE_LINK}/api/announcements`).then((res) => {
+	// 		res.json().then((data) => {
+	// 			setAnnouncementData(data);
+	// 		});
+	// 	});
+	// }, [API_BASE_LINK]);
+	// API Preparation
+
 	return (
-		<div className="container mx-auto mt-12">
+		<div className="container mx-auto mt-2">
 			<section className="relative w-full">
 				{/* Logo */}
 				<div className="absolute right-20 hidden aspect-[1213/2210] w-1/4 2xl:inline">
 					<Image src="/assets/images/logos/ssc-mascot-new.png" alt="Stamford Syntax Club Mascot" fill />
 				</div>
+
+				{/* Annnouncement */}
+				<Announcement />
 
 				{/* Header */}
 				<h1>
