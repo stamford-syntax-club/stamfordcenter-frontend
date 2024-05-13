@@ -42,6 +42,10 @@ export const navigationItems: NavigationItem[] = [
 		title: "About Us",
 		href: "/about",
 	},
+	{
+		title: "Course Compose",
+		href: "https://reviews.stamford.dev",
+	},
 ];
 
 export default function ApplicationHeader({ opened, toggle }: ApplicationHeaderProps) {
@@ -96,15 +100,15 @@ function Navigation({ items }: { items: NavigationItem[] }) {
 		<div className="ml-10 hidden h-full w-full flex-row items-center gap-x-4 lg:flex">
 			{items.map((item) => (
 				<div key={"navitem" + item.title} className="relative flex h-full cursor-pointer flex-col items-center">
-					{item.subitems ? <NavLinkWithDropdown {...item} /> : <NormalNavLink {...item} />}
+					{item.subitems ? <NavLinkWithDropdown {...item} /> : <NormalNavLink {...item} isExternal={item.href.startsWith("http")} />}
 				</div>
 			))}
 		</div>
 	);
 }
 
-function NormalNavLink({ title, href }: NavigationItem) {
-	return <NavLink component={Link} label={title} href={href} className="rounded-sm no-underline" />;
+function NormalNavLink({ title, href, isExternal = false }: NavigationItem & { isExternal?: boolean }) {
+	return <NavLink component={Link} label={title} href={href} target={isExternal ? "_blank" : undefined} className="rounded-sm no-underline" />;
 }
 
 function NavLinkWithDropdown({ title: mainTitle, href: mainHref, subitems: mainSubitems }: NavigationItem) {
